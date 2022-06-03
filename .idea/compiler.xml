@@ -2,15 +2,11 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-      </profile>
       <profile name="Annotation profile for ArhkeLib" enabled="true">
         <sourceOutputDir name="../target/generated-sources/annotations" />
         <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="v1_12_R2" />
         <module name="v1_18_R2" />
         <module name="API" />
       </profile>
@@ -20,6 +16,7 @@
       <module name="ArhkeLib" target="8" />
       <module name="ArhkeLib (1) (v1_18_R2)" target="8" />
       <module name="itemstacklib-craftbukkit_1_13_R2" target="8" />
+      <module name="v1_12_R2" target="8" />
       <module name="v1_18_R2" target="8" />
     </bytecodeTargetLevel>
   </component>
