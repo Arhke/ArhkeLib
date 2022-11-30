@@ -17,13 +17,13 @@ public class SQLUtil {
 		if(string.length() > size){
 			string = string.substring(0, size);
 		}
-		String newString = "";
+		StringBuilder newString = new StringBuilder();
 		for(char c : string.toCharArray()){
 			if(Character.isAlphabetic(c) || Character.isDigit(c) || c == '-' || c == '_' || contains(exception, c)){
-				newString += c + "";
+				newString.append(c);
 			}
 		}
-		return newString;
+		return newString.toString();
 	}
 
 	private static boolean contains(char[] exception, char c) {

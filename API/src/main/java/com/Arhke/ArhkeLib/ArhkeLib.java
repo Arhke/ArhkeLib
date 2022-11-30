@@ -3,7 +3,6 @@ package com.Arhke.ArhkeLib;
 import com.Arhke.ArhkeLib.Lib.CustomEvents.CustomEventListener;
 import com.Arhke.ArhkeLib.Lib.GUI.GUIManager;
 //import com.Arhke.ArhkeLib.Lib.Hook.Hook;
-import com.Arhke.ArhkeLib.Lib.Utils.RecipeUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
@@ -15,11 +14,6 @@ public class ArhkeLib extends JavaPlugin {
 
     ConsoleCommandSender consoleSender = Bukkit.getConsoleSender();
 
-    File kingdomsDataFolder, townDataFolder, tUserDataFolder, worldDataFolder,
-            customItemFolder, recipeFolder;
-
-    //=============<Managers>=============
-    private GUIManager guiManager;
 
 
     private static ArhkeLib plugin ;
@@ -29,8 +23,6 @@ public class ArhkeLib extends JavaPlugin {
         consoleSender.sendMessage("[ArhkeLib] " + ChatColor.GREEN + "Arhke-Lib started loading...");
 
         //register the event listeners
-        initializeListeners();
-        RecipeUtil.instance = this;
         consoleSender.sendMessage("[ArhkeLib] " + ChatColor.GREEN + "Arhke-Lib is fully loaded!");
     }
 
@@ -46,7 +38,6 @@ public class ArhkeLib extends JavaPlugin {
     }
 
     private void initializeListeners() {
-        Bukkit.getPluginManager().registerEvents(new CustomEventListener(this), this);
 
     }
 

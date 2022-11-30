@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>ArhkeLib</artifactId>
-        <groupId>com.Arhke</groupId>
+        <groupId>com.Arhke.ArhkeLib</groupId>
         <version>2.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,6 +12,15 @@
     <artifactId>v1_18_R2</artifactId>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>net.md-5</groupId>
                 <artifactId>specialsource-maven-plugin</artifactId>
@@ -47,13 +56,12 @@
                             </remappedDependencies>
                         </configuration>
                     </execution>
+
                 </executions>
 
             </plugin>
 
         </plugins>
-<!--        <directory>../target</directory>-->
-<!--        <finalName>${project.parent.artifactId}-${project.version}-</finalName>-->
     </build>
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
@@ -67,12 +75,7 @@
             <classifier>remapped-mojang</classifier>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.Arhke</groupId>
-            <artifactId>API</artifactId>
-            <version>2.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 
 </project>

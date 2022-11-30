@@ -2,16 +2,15 @@ package com.Arhke.ArhkeLib.Lib.Base;
 
 import com.Arhke.ArhkeLib.Lib.Configs.ConfigFile;
 import com.Arhke.ArhkeLib.Lib.Configs.ConfigLoader;
+import com.Arhke.ArhkeLib.Lib.CustomEvents.CustomEventListener;
 import com.Arhke.ArhkeLib.Lib.FileIO.ConfigManager;
 import com.Arhke.ArhkeLib.Lib.GUI.GUIManager;
 import com.Arhke.ArhkeLib.Lib.Hook.Hook;
 import com.Arhke.ArhkeLib.Lib.Hook.Plugins;
-import com.Arhke.ArhkeLib.Lib.Utils.RecipeUtil;
+import com.Arhke.ArhkeLib.Lib.Utils.RecipeBuilder;
 import com.earth2me.essentials.libs.checkerframework.checker.nullness.qual.Nullable;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.PluginCommand;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.function.Consumer;
@@ -20,6 +19,7 @@ public abstract class PluginBase extends JavaPlugin {
     protected ConfigLoader configLoader;
     protected Hook hook;
     protected GUIManager guiManager;
+    protected RecipeBuilder recipeBuilder;
     public Hook getHook() {return hook;}
     public GUIManager getGUIManager(){
         return guiManager;
@@ -60,7 +60,15 @@ public abstract class PluginBase extends JavaPlugin {
     public final void registerConfigLoader(Class<? extends ConfigFile>... configEnums){
         this.configLoader = new ConfigLoader(this, null, configEnums);
     }
-    public void registerRecipe(String name, ItemStack is, Material... materials){
-        RecipeUtil.registerRecipe(name, is, materials);
+    public void registerRecipeBuilder(){
+        if(recipeBuilder == null){
+            recipeBuilder = new RecipeBuilder(this);
+        }
+    }
+    public RecipeBuilder getRecipeBuilder(){
+        return recipeBuilder;
+    }
+    public final void registerCustomEvents(){
+        Bukkit.getPluginManager().registerEvents(new CustomEventListener(this), this);
     }
 }

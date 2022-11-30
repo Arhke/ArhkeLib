@@ -7,8 +7,8 @@ package com.Arhke.ArhkeLib.Lib.sql;
  * @version 5/24/17
  */
 public class Table {
-	private String name;
-	private String usage;
+	private final String name;
+	private final String usage;
 
 	public Table(String name, String usage) {
 		this.name = name;
@@ -24,7 +24,7 @@ public class Table {
 	}
 
 	public String getValues() {
-		String v = "";
+		StringBuilder v = new StringBuilder();
 		String[] usageArray = this.usage.split(",");
 		int i = 0;
 		for (String column : usageArray) {
@@ -33,7 +33,7 @@ public class Table {
 			// exclude primary key information from columns
 			if (!column.toUpperCase().startsWith("PRIMARY KEY")) {
 				String[] c = column.split(" ");
-				v = v + (c[0] == null ? "" : new StringBuilder().append(c[0]).append(i <= usageArray.length - 1 ? "," : "").toString());
+				v.append(c[0] == null ? "" : c[0] + (i <= usageArray.length - 1 ? "," : ""));
 			}	
 		}
 
