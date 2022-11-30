@@ -9,15 +9,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <content url="file://$MODULE_DIR$/../v1_19_R2/src/main/java">
-      <sourceFolder url="file://$MODULE_DIR$/../v1_19_R2/src/main/java" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/../v1_19_R2/src/main/resources">
-      <sourceFolder url="file://$MODULE_DIR$/../v1_19_R2/src/main/resources" type="java-resource" />
-    </content>
-    <content url="file://$MODULE_DIR$/../v1_19_R2/src/test/java">
-      <sourceFolder url="file://$MODULE_DIR$/../v1_19_R2/src/test/java" isTestSource="true" />
-    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.spigotmc:spigot:remapped-mojang:1.18.2-R0.1-SNAPSHOT" level="project" />

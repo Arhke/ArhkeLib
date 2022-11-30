@@ -9,6 +9,7 @@
         <module name="v1_12_R2" />
         <module name="v1_18_R2" />
         <module name="API" />
+        <module name="v1_18_R2 (1)" />
         <module name="v1_8_8" />
       </profile>
     </annotationProcessing>
@@ -19,6 +20,7 @@
       <module name="itemstacklib-craftbukkit_1_13_R2" target="8" />
       <module name="v1_12_R2" target="8" />
       <module name="v1_18_R2" target="8" />
+      <module name="v1_18_R2 (1)" target="8" />
       <module name="v1_8_8" target="8" />
     </bytecodeTargetLevel>
   </component>
