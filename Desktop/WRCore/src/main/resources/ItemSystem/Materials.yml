@@ -1,0 +1,11 @@
+Smeltery:
+  Valid:
+    - 'IRON_INGOT'
+    - 'COAL'
+  Explode:
+    - 'COAL_ORE'
+Cauldron:
+  Valid:
+    - 'IRON_INGOT'
+  Explode:
+    - 'COAL_ORE'
