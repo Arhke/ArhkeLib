@@ -1,51 +1,25 @@
 package com.Arhke.ArhkeLib.VDC.v18;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.entity.animal.Wolf;
-import net.minecraft.world.entity.monster.*;
-import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.monster.RangedAttackMob;
+import net.minecraft.world.entity.monster.SpellcasterIllager;
+import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.*;
+import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.entity.raid.Raider;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import org.bukkit.*;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftEntity;
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftProjectile;
-import org.bukkit.craftbukkit.v1_18_R2.event.CraftEventFactory;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.EntityShootBowEvent;
-import org.bukkit.material.MaterialData;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 
 public class IceologerEntity extends SpellcasterIllager implements RangedAttackMob {
@@ -114,7 +88,7 @@ public class IceologerEntity extends SpellcasterIllager implements RangedAttackM
     }
 
     public boolean isAlliedTo(Entity entity) {
-        return entity == null ? false : (entity == this ? true : (super.isAlliedTo(entity) ? true : (entity instanceof Vex ? this.isAlliedTo(((Vex)entity).getOwner()) : (entity instanceof LivingEntity && ((LivingEntity)entity).getMobType() == MobType.ILLAGER ? this.getTeam() == null && entity.getTeam() == null : false))));
+        return entity != null && (entity == this || (super.isAlliedTo(entity) || (entity instanceof Vex ? this.isAlliedTo(((Vex) entity).getOwner()) : (entity instanceof LivingEntity && ((LivingEntity) entity).getMobType() == MobType.ILLAGER && this.getTeam() == null && entity.getTeam() == null))));
     }
 
     protected SoundEvent getAmbientSound() {
@@ -202,42 +176,4 @@ public class IceologerEntity extends SpellcasterIllager implements RangedAttackM
             return IllagerSpell.SUMMON_VEX;
         }
     }
-//    private class IceologerDeadlySnowball extends SpellcasterCastingSpellGoal {
-//
-//        protected int getCastingTime() {
-//            return 40;
-//        }
-//
-//        protected int getCastingInterval() {
-//            return 100;
-//        }
-//        @SuppressWarnings("ConstantConditions")
-//        protected void performSpellCasting() {
-//            LivingEntity entityliving = IceologerEntity.this.getTarget();
-//            if(entityliving == null){
-//                return;
-//            }
-//            ServerLevel worldserver = (ServerLevel)IceologerEntity.this.level;
-//            World world = Bukkit.getWorld(worldserver.uuid);
-//            Location loc =  new Location(world,IceologerEntity.this.getX(), IceologerEntity.this.getY(), IceologerEntity.this.getZ());
-//            Projectile snowball = ((CraftProjectile)world.spawnEntity(loc,org.bukkit.entity.EntityType.SNOWBALL)).getHandle();
-//            snowball.setOwner(IceologerEntity.this);
-//            double d0 = entityliving.getX() - IceologerEntity.this.getX();
-//            double d1 = entityliving.getY(0.3333333333333333D) - snowball.getY();
-//            double d2 = entityliving.getZ() - IceologerEntity.this.getZ();
-//            double d3 = Math.sqrt(d0 * d0 + d2 * d2);
-//            snowball.shoot(d0, d1 + d3 * 0.20000000298023224D, d2, 1.6F, (float)(14 - IceologerEntity.this.level.getDifficulty().getId() * 4));
-//
-//            IceologerEntity.this.playSound(SoundEvents.SNOWBALL_THROW, 1.0F, 1.0F / (IceologerEntity.this.getRandom().nextFloat() * 0.4F + 0.8F));
-//
-//        }
-//
-//        protected SoundEvent getSpellPrepareSound() {
-//            return SoundEvents.EVOKER_PREPARE_ATTACK;
-//        }
-//
-//        protected IllagerSpell getSpell() {
-//            return IllagerSpell.FANGS;
-//        }
-//    }
 }
