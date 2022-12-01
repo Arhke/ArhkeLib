@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86e31156-4df3-4cdd-a795-8a6389f337d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_12_R2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/v1_12_R2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_18_R2/src/main/java/com/Arhke/ArhkeLib/VDC/v18/IceologerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/src/main/java/com/Arhke/ArhkeLib/VDC/v18/IceologerEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_19_R2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_19_R2/src/main/java/com/Arhke/ArhkeLib/VDC/v19/IslandWither.java" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/src/main/java/com/Arhke/ArhkeLib/VDC/v19/IslandWither.java" afterDir="false" />
-    </list>
+    <list default="true" id="86e31156-4df3-4cdd-a795-8a6389f337d2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
