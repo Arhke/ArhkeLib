@@ -8,7 +8,7 @@
 //import com.Arhke.ArhkeLib.District.util.ErrorManager;
 //
 ///**
-// * Used to save and load kingdoms from sql
+// * Used to write and load kingdoms from sql
 // *
 // * @author Michael Forseth
 // * @version Dec 18, 2017
@@ -54,7 +54,7 @@
 //		}
 //	}
 //
-//	public static void save(final Kingdom kingdom, boolean async) {
+//	public static void write(final Kingdom kingdom, boolean async) {
 //
 //		String banner = "";
 //		if(Feudal.getVersion().equals("1.7") && banner != null) {

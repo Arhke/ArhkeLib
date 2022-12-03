@@ -26,7 +26,7 @@
 //import com.Arhke.ArhkeLib.District.util.ErrorManager;
 //
 ///**
-// * Used to save and load user information from sql
+// * Used to write and load user information from sql
 // *
 // * @author Michael Forseth
 // * @version Dec 18, 2017
@@ -45,7 +45,7 @@
 //	/*
 //	 * Saves a user via MySQL
 //	 */
-//	public static void save(final TUser user, boolean async) {
+//	public static void write(final TUser user, boolean async) {
 //		SQLControl sql = null /*Feudal._feudal.getSql()*/;
 //
 //		String world = "world";
@@ -438,7 +438,7 @@
 //					king.checkOnline();
 //					if (kingLastOn != king.getLastOnline()) {
 //						try {
-//							king.save();
+//							king.write();
 //						} catch (Exception e) {
 //							ErrorManager.error(17, e);
 //						}

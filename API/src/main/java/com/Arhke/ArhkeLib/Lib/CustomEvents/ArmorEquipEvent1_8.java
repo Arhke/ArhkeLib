@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.inventory.ItemStack;
 
-public final class ArmorEquipEvent extends PlayerEvent implements Cancellable{
+public final class ArmorEquipEvent1_8 extends PlayerEvent implements Cancellable{
 	
 	private static final HandlerList handlers = new HandlerList();
 	private boolean cancel = false;
@@ -20,7 +20,7 @@ public final class ArmorEquipEvent extends PlayerEvent implements Cancellable{
 	 * @param oldArmorPiece The ItemStack of the armor removed.
 	 * @param newArmorPiece The ItemStack of the armor added.
 	 */
-	public ArmorEquipEvent(final Player player, final EquipMethod equipType, final ArmorType type, final ItemStack oldArmorPiece, final ItemStack newArmorPiece){
+	public ArmorEquipEvent1_8(final Player player, final EquipMethod equipType, final ArmorType type, final ItemStack oldArmorPiece, final ItemStack newArmorPiece){
 		super(player);
 		this.equipType = equipType;
 		this.type = type;

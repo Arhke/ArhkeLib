@@ -8,5 +8,5 @@ import com.Arhke.ArhkeLib.Lib.FileIO.FileManager;
  */
 public interface ConfigFile{;
     void createConfigDefaults(FileManager fm);
-    String[] getFilePaths();
+    String[] getFilePath();
 }

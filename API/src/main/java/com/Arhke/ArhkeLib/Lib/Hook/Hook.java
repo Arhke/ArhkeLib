@@ -1,15 +1,12 @@
 package com.Arhke.ArhkeLib.Lib.Hook;
 
 
+import at.pavlov.cannons.API.CannonsAPI;
+import at.pavlov.cannons.Cannons;
 import com.Arhke.ArhkeLib.Lib.Base.MainBase;
 import com.earth2me.essentials.Essentials;
-import com.sk89q.worldedit.EditSession;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
-import com.sk89q.worldedit.math.BlockVector3;
-import com.sk89q.worldedit.regions.CuboidRegion;
-import com.sk89q.worldedit.util.formatting.text.TranslatableComponent;
-import com.sk89q.worldedit.world.RegenOptions;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.Flags;
@@ -32,14 +29,15 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.function.BiFunction;
-
+@SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class Hook extends MainBase<JavaPlugin> {
 	private Essentials essentials;
 	private Economy econ;
 	private Permission perm;
 	private WorldGuard worldGuard;
 	private WorldGuardPlugin wgPlugin;
-
+	private CannonsAPI cannonsAPI;
+	private Cannons cannons;
 	private WorldEditPlugin worldEdit;
 	private NBTAPI nbtapi;
 	public Hook(JavaPlugin instance, Plugins... plugins){
@@ -62,6 +60,9 @@ public class Hook extends MainBase<JavaPlugin> {
 		}
 		if (pluginsList.contains(Plugins.NBTAPI)  && !setUpNBTAPI()) {
 			exceptDisable("Disabled due to no NBTAPI Dependency Found");
+		}
+		if (pluginsList.contains(Plugins.CANNONS)  && !setUpCannons()) {
+			exceptDisable("Disabled due to no Cannons Dependency Found");
 		}
 	}
 
@@ -119,7 +120,16 @@ public class Hook extends MainBase<JavaPlugin> {
 		this.nbtapi = (NBTAPI) plugin;
 		return true;
 	}
+	boolean setUpCannons() {
+		Plugin plug = Bukkit.getPluginManager().getPlugin("Cannons");
 
+		if (plug instanceof Cannons) {
+			this.cannons = ((Cannons) plug);
+			this.cannonsAPI = cannons.getCannonsAPI();
+			return true;
+		}
+		return false;
+	}
 	//==================<Get>=====================
 	public WorldEditPlugin getWorldEdit(){
 		return worldEdit;
@@ -134,7 +144,7 @@ public class Hook extends MainBase<JavaPlugin> {
 	}
 	/**
 	 * Get balance from UUID
-	 * @param uuid
+	 * @param uuid Player UUID
 	 * @return the balance from the corresponding UUID
 	 */
 	public double getBalance(UUID uuid){
@@ -290,6 +300,13 @@ public class Hook extends MainBase<JavaPlugin> {
 	}
 
 
+	//==============<Cannons>=================
+	public Cannons getCannons(){
+		return this.cannons;
+	}
+	public CannonsAPI getCannonsAPI(){
+		return this.cannonsAPI;
+	}
 	//target ability
 //	public static boolean isTargeteableEntity(Entity entity){
 //		return isTargeteableLivingEntity(entity) || entity instanceof Item;

@@ -1,5 +1,6 @@
 package com.Arhke.ArhkeLib.Lib.CustomEvents;
 
+import com.Arhke.ArhkeLib.Lib.CustomEvents.CustomEventListeners.ArmorEquipListener;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -22,7 +23,7 @@ public enum ArmorType{
 	 * @return The parsed ArmorType, or null if not found.
 	 */
 	public static ArmorType matchType(final ItemStack itemStack){
-		if(CustomEventListener.isAirOrNull(itemStack)) return null;
+		if(ArmorEquipListener.isAirOrNull(itemStack)) return null;
 		String type = itemStack.getType().name();
 		if(type.endsWith("_HELMET") || type.endsWith("_SKULL") || type.endsWith("_HEAD")) return HELMET;
 		else if(type.endsWith("_CHESTPLATE")) return CHESTPLATE;

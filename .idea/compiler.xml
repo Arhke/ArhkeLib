@@ -13,8 +13,5 @@
         <module name="v1_8_8" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ArhkeLib" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,6 +1,6 @@
 package com.Arhke.ArhkeLib.Lib.FileIO;
 
-public interface YmlSerializable {
-    void read(DataManager dm);
+public interface YamlSerializable {
+    void load(DataManager dm);
     void write(DataManager dm);
 }

@@ -1,19 +1,19 @@
 package com.Arhke.ArhkeLib.Lib.ChunkDataManager;
 
 import com.Arhke.ArhkeLib.ArhkeLib;
+import com.Arhke.ArhkeLib.Lib.FileIO.YamlSerializable;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
 import java.util.*;
 
-public class ChunkData<T>{
-    private final World world;
-    private final int x, z;
-    private T data;
-    private boolean initialized = false;
-    private static final ArrayList<Block> marks = new ArrayList<>();
-    private static final Map<PlayerContainer, Long> timePlayer = new HashMap<>();
+public abstract class ChunkData implements YamlSerializable {
+    protected World world;
+    protected int x, z;
+    protected static final ArrayList<Block> marks = new ArrayList<>();
+    protected static final Map<PlayerContainer, Long> timePlayer = new HashMap<>();
+    public ChunkData(){}
     public ChunkData(Chunk chunk) {
         world = chunk.getWorld();
         x = chunk.getX();
@@ -28,12 +28,15 @@ public class ChunkData<T>{
     public int getX() {
         return x;
     }
-    protected void setData(T o){this.initialized = true;this.data = o;}
-    protected T getData(){return this.data;}
-    protected boolean isInitialized(){return this.initialized;}
-    
-
-
+    protected void setZ(int z){
+        this.z = z;
+    }
+    protected void setX(int x){
+        this.x = x;
+    }
+    protected void setWorld(World world){
+        this.world = world;
+    }
     @Override
     public boolean equals(Object obj){
         if(obj == null){
@@ -68,7 +71,7 @@ public class ChunkData<T>{
         }
     }
     public boolean isIn(Location location){
-        return location.getWorld().equals(this.getWorld()) &&
+        return Objects.equals(location.getWorld(), this.getWorld()) &&
                 location.getChunk().getX() == this.getX() && location.getChunk().getZ() == this.getZ();
     }
 
@@ -218,7 +221,7 @@ public class ChunkData<T>{
             @Override
             public void run() {
                 for(Block b : blocks){
-                    if(b != null && marks.contains(b)){
+                    if(marks.contains(b)){
                         p.sendBlockChange(b.getLocation(), b.getType(), b.getData());
                         marks.remove(b);
                     }

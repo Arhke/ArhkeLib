@@ -29,7 +29,7 @@ public class ConfigLoader extends MainBase<JavaPlugin> {
             for(ConfigFile configFile:enumClass.getEnumConstants()) {
                 FileManager fm;
                 try {
-                    fm = new FileManager(Paths.get(getPlugin().getDataFolder().toString(), configFile.getFilePaths()).toFile());
+                    fm = new FileManager(Paths.get(getPlugin().getDataFolder().toString(), configFile.getFilePath()).toFile());
                 }catch(Exception e){
                     e.printStackTrace();
                     except("Unable to setup FileManager");

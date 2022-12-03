@@ -41,12 +41,11 @@ public class DirectoryManager extends Base {
     public Collection<DirectoryManager> getDMList(){
         return directorySet;
     }
-    @Nullable
     public FileManager getOrNewFM(String path){
         try {
             return new FileManager(Paths.get(this.dir.toString(), path).toFile());
         }catch(Exception e){
-            return null;
+            throw new RuntimeException("Cannot get new FM");
         }
     }
 

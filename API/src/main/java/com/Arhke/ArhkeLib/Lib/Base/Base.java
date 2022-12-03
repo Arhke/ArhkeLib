@@ -17,7 +17,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
+@SuppressWarnings("unused")
 public abstract class Base {
     static boolean isPlaceholderAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null;
     static Random rand = new Random();
@@ -219,6 +219,38 @@ public abstract class Base {
     }
     public static void sendActionBar(Player player, String msg){
         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(msg).create());
+    }
+    protected boolean isAlpha(String name) {
+        char[] chars = name.toLowerCase().toCharArray();
+        for (char c : chars) {
+            if(c < 97 || c > 122) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    protected String getLastOnlineTime(boolean online, long lastOnline) {
+        if(online){
+            return "ONLINE NOW";
+        }
+        long rem = System.currentTimeMillis() - lastOnline;
+        long years = rem / 31557600000L;
+        long weeks = (rem - (years * 31557600000L)) / 604800000L;
+        long days = (rem-(years * 31557600000L)-(weeks * 604800000L)) / 86400000;
+        long hours = ((rem - (days * 86400000) - (years * 31557600000L)-(weeks * 604800000L)) / 3600000);
+        long minutes = (rem - (days * 86400000) - (hours * 3600000)-(years * 31557600000L)-(weeks * 604800000L)) / 60000;
+        long seconds = (rem - (days * 86400000) - (hours * 3600000) - (minutes * 60000)-(years * 31557600000L)-(weeks * 604800000L)) / 1000;
+        if(years == 0){
+            if(weeks == 0){
+                return days + (days == 1 ? " day" : " days") + " " + hours + ":" + minutes + ":" + seconds + " ago";
+            }else{
+                return weeks + (weeks == 1 ? " week" : " weeks") + ", " + days + (days == 1 ? " day" : " days") + " " + hours + ":" + minutes + ":" + seconds + " ago";
+            }
+        }else{
+            return years + (years == 1 ? " year" : " years") + ", " + weeks + (weeks == 1 ? " week" : " weeks") + ", " + days + (days == 1 ? " day" : " days") + " " + hours + ":" + minutes + ":" + seconds + " ago";
+        }
     }
 //    protected class LevelUtil{
 //        int _level;

@@ -2,7 +2,8 @@ package com.Arhke.ArhkeLib.Lib.Base;
 
 import com.Arhke.ArhkeLib.Lib.Configs.ConfigFile;
 import com.Arhke.ArhkeLib.Lib.Configs.ConfigLoader;
-import com.Arhke.ArhkeLib.Lib.CustomEvents.CustomEventListener;
+import com.Arhke.ArhkeLib.Lib.CustomEvents.CustomEventListeners.ArmorEquipListener;
+import com.Arhke.ArhkeLib.Lib.CustomEvents.CustomEventListeners.MoveChunkListener;
 import com.Arhke.ArhkeLib.Lib.FileIO.ConfigManager;
 import com.Arhke.ArhkeLib.Lib.GUI.GUIManager;
 import com.Arhke.ArhkeLib.Lib.Hook.Hook;
@@ -15,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.function.Consumer;
 
+@SuppressWarnings("unused")
 public abstract class PluginBase extends JavaPlugin {
     protected ConfigLoader configLoader;
     protected Hook hook;
@@ -33,9 +35,7 @@ public abstract class PluginBase extends JavaPlugin {
     public void registerCommands(CommandsBase<?>... commands) {
         for (CommandsBase<?> command: commands) {
             PluginCommand pc = getCommand(command.getCmd());
-            if(command.getDM() instanceof ConfigManager){
-                ((ConfigManager)command.getDM()).getFM().save();
-            }
+            command.getDM().getFM().save();
             if(pc == null){
                 Base.warn("Could not register" + command.getCmd());
                 continue;
@@ -68,7 +68,11 @@ public abstract class PluginBase extends JavaPlugin {
     public RecipeBuilder getRecipeBuilder(){
         return recipeBuilder;
     }
-    public final void registerCustomEvents(){
-        Bukkit.getPluginManager().registerEvents(new CustomEventListener(this), this);
+    public final void registerCustomEvents(int version){
+        if(version < 12){
+            Bukkit.getPluginManager().registerEvents(new ArmorEquipListener(), this);
+        }
+        Bukkit.getPluginManager().registerEvents(new MoveChunkListener(), this);
+
     }
 }

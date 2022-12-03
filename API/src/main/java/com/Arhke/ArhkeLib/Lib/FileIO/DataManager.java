@@ -6,8 +6,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -194,12 +192,12 @@ public class DataManager extends Base {
             return defList;
 
     }
-    public <T extends YmlSerializable> T getObj(Supplier<T> supp, String... path)  {
+    public <T extends YamlSerializable> T getObj(Supplier<T> supp, String... path)  {
         T obj = supp.get();
-        obj.read(getDataManager(path));
+        obj.load(getDataManager(path));
         return obj;
     }
-    public <T extends YmlSerializable> void loadCollection(Supplier<T> supp, Collection<T> collection)  {
+    public <T extends YamlSerializable> void loadCollection(Supplier<T> supp, Collection<T> collection)  {
         for(String key: getConfig().getKeys(false)) {
             collection.add(getObj(supp,key));
         }
@@ -218,8 +216,8 @@ public class DataManager extends Base {
     }
     public void set(Object value, String... path) {
         String pathString = pathOf(path);
-        if(value instanceof YmlSerializable){
-            ((YmlSerializable) value).write(getDataManager(path));
+        if(value instanceof YamlSerializable){
+            ((YamlSerializable) value).write(getDataManager(path));
             return;
         }
         config.set(pathString, value);
@@ -236,11 +234,11 @@ public class DataManager extends Base {
             try {
                 return UUID.fromString(config.getString(pathString));
             }catch(IllegalArgumentException exception){
-                warn("Unable to read "+config.getString(pathString) + " into a UUID");
+                warn("Unable to load "+config.getString(pathString) + " into a UUID");
                 return null;
             }
         }else{
-            warn("Unable to read path:"+pathString+"into a UUID");
+            warn("Unable to load path:"+pathString+"into a UUID");
             return null;
         }
     }

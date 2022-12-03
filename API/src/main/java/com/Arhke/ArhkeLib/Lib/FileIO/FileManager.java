@@ -78,8 +78,8 @@ public class FileManager extends Base {
 
     /**
      * saves the configuration currently in the FileManager
-     * @param file the file path to save to
-     * @return true if save was successful, false otherwise
+     * @param file the file path to write to
+     * @return true if write was successful, false otherwise
      */
     public boolean saveToFile(File file) {
         try {
@@ -92,8 +92,8 @@ public class FileManager extends Base {
         }
     }
     /**
-     * save the configuration to the filepath in FileManager
-     * @return true if save was successful
+     * write the configuration to the filepath in FileManager
+     * @return true if write was successful
      */
     public boolean save(){
         return saveToFile(file);

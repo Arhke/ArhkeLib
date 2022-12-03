@@ -1,40 +1,35 @@
 package com.Arhke.ArhkeLib.Lib.ChunkDataManager;
 
 import com.Arhke.ArhkeLib.Lib.Base.MainBase;
-import com.Arhke.ArhkeLib.Lib.FileIO.DataManager;
 import com.Arhke.ArhkeLib.Lib.FileIO.DirectoryManager;
-import org.bukkit.Bukkit;
+import com.Arhke.ArhkeLib.Lib.FileIO.FileManager;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
-public abstract class WorldDataManager<T> extends MainBase<JavaPlugin> implements Listener {
+public class WorldDataManager<T extends ChunkData> extends MainBase<JavaPlugin> {
 
     DirectoryManager dm;
-    Class<T> clazz;
-    Map<String, ChunkDataManager> _worldData = new HashMap<>();
-    protected WorldDataManager(JavaPlugin instance, DirectoryManager dm, Class<T> clazz) {
+    Map<String, ChunkDataManager<T>> worldData = new HashMap<>();
+    Supplier<T> supplier;
+    public WorldDataManager(JavaPlugin instance, DirectoryManager dm, Supplier<T> supplier) {
         super(instance);
         this.dm = dm;
-        this.clazz = clazz;
-        Bukkit.getPluginManager().registerEvents(this, getPlugin());
+        this.supplier = supplier;
     }
 
-//    #################Abstract Methods################
-    public abstract T loadFromDataManager(DataManager dm);
-    public abstract void writeToDataManager(DataManager dm);
 
 //    ###################Data Retrievers################
     public T getData(World world, int x, int z){
-        return null; //fixme
+        ChunkDataManager<T> cdm = worldData.get(world.getName());
+        if (cdm == null) return null;
+        return cdm.getChunkData(x, z);
     }
 
     public T getData(Chunk c){
@@ -43,91 +38,25 @@ public abstract class WorldDataManager<T> extends MainBase<JavaPlugin> implement
     public  T getData(Location location){
         return getData(location.getChunk());
     }
-    public ChunkData getOrNewChunkData(World world, int x, int z){
+    public T getOrNewChunkData(World world, int x, int z){
         return getOrNewChunkDataManager(world).getChunkData(x, z);
     }
-    public ChunkData getOrNewChunkData(Chunk c){
+    public T getOrNewChunkData(Chunk c){
         return getOrNewChunkData(c.getWorld(), c.getX(), c.getZ());
     }
-    public ChunkData getOrNewChunkData(Location location){
+    public T getOrNewChunkData(Location location){
         return getOrNewChunkData(location.getChunk());
     }
-    public ChunkDataManager getOrNewChunkDataManager(World world){
-        ChunkDataManager cdm = _worldData.get(world.getName());
+    public ChunkDataManager<T> getOrNewChunkDataManager(World world){
+        ChunkDataManager<T> cdm = worldData.get(world.getName());
         if (cdm == null){
-            _worldData.put(world.getName(), cdm = new ChunkDataManager(world));
+            worldData.put(world.getName(), cdm = new ChunkDataManager<T>(world, dm.getOrNewDM(world.getName()), supplier));
         }
         return cdm;
     }
-//    public void saveAllChunkData(){
-//        _worldData.values().forEach(ChunkDataManager::save);
-//    }
-    public void save(ChunkData cd) {
-//        dm.deleteContents();
-//        for (List<ChunkData> cdList : xz) {
-//            if (cdList == null) {
-//                continue;
-//            }
-//            for (ChunkData cd : cdList) {
-//                if (cd == null) {
-//                    continue;
-//                }
-//                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
-//                cd.save(fm);
-//            }
-//        }
-//        for (List<ChunkData> cdList : _xz) {
-//            if (cdList == null) {
-//                continue;
-//            }
-//            for (ChunkData cd : cdList) {
-//                if (cd == null) {
-//                    continue;
-//                }
-//                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
-//                cd.save(fm);
-//            }
-//        }
-//        for (List<ChunkData> cdList : x_z) {
-//            if (cdList == null) {
-//                continue;
-//            }
-//            for (ChunkData cd : cdList) {
-//                if (cd == null) {
-//                    continue;
-//                }
-//                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
-//                cd.save(fm);
-//            }
-//        }
-//        for (List<ChunkData> cdList : _x_z) {
-//            if (cdList == null) {
-//                continue;
-//            }
-//            for (ChunkData cd : cdList) {
-//                if (cd == null) {
-//                    continue;
-//                }
-//                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
-//                cd.save(fm);
-//            }
-//        }
+    public void saveAllChunkData(){
+        worldData.values().forEach(ChunkDataManager::save);
     }
 
-
-    //    ######################Events########################
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onChunkLoad(ChunkLoadEvent event){
-        ChunkData cd = getOrNewChunkData(event.getChunk());
-        DirectoryManager worldDM = dm.getOrNewDM(event.getWorld().getName());
-        if (worldDM == null){
-//            cd.set
-        }
-//        .setData(loadFromDataManager(worldDM.getOrLoadFM());
-    }
-//    @EventHandler(priority = EventPriority.MONITOR)
-//    public void onChunkLoad(ChunkUnloadEvent event){
-//        event.
-//    }
 
 }

@@ -1,25 +1,27 @@
 package com.Arhke.ArhkeLib.Lib.ChunkDataManager;
 
-import com.Arhke.ArhkeLib.Lib.Base.MainBase;
 import com.Arhke.ArhkeLib.Lib.FileIO.DirectoryManager;
 import com.Arhke.ArhkeLib.Lib.FileIO.FileManager;
 import com.Arhke.ArhkeLib.Lib.Utils.ExpandableList;
-import com.Arhke.ArhkeLib.ArhkeLib;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
+import java.util.function.Supplier;
 
-public class ChunkDataManager<T>{
-    List<List<ChunkData>> xz = new ExpandableList<>();
-    List<List<ChunkData>> x_z = new ExpandableList<>();
-    List<List<ChunkData>> _xz = new ExpandableList<>();
-    List<List<ChunkData>> _x_z = new ExpandableList<>();
-    World world;
-    protected ChunkDataManager(World world) {
+public class ChunkDataManager<T extends ChunkData>{
+    List<List<T>> xz = new ExpandableList<>();
+    List<List<T>> x_z = new ExpandableList<>();
+    List<List<T>> _xz = new ExpandableList<>();
+    List<List<T>> _x_z = new ExpandableList<>();
+    final World world;
+    final DirectoryManager dm;
+    final Supplier<T> p;
+    protected ChunkDataManager(World world, DirectoryManager dm, Supplier<T> p) {
         this.world = world;
+        this.dm = dm;
+        this.p = p;
     }
 
 
@@ -28,7 +30,7 @@ public class ChunkDataManager<T>{
      * @param z Chunk z coordinates
      * @return <b>ChunkData</b> of the chunk for the given chunk
      */
-    public ChunkData getChunkData(int x, int z) {
+    public T getChunkData(int x, int z) {
         if (x >= 0){
             if (z >= 0){
                 return fetchChunkData(xz, x, z);
@@ -48,20 +50,20 @@ public class ChunkDataManager<T>{
      * @param c Bukkit Chunk Object specifying location of the data
      * @return <b>ChunkData</b> of the chunk for the given chunk
      */
-    public ChunkData getChunkData(Chunk c) {
+    public T getChunkData(Chunk c) {
         return getChunkData(c.getX(), c.getZ());
     }
     /**
      * @param loc Bukkit Location Object specifying location of the data
      * @return <b>ChunkData</b> of the chunk for the given chunk
      */
-    public ChunkData getChunkData(Location loc) {
+    public T getChunkData(Location loc) {
         return getChunkData(loc.getChunk());
     }
-    private ChunkData fetchChunkData(List<List<ChunkData>> dataMap, int x, int z){
+    private T fetchChunkData(List<List<T>> dataMap, int x, int z){
         int absX = Math.abs(x);
         int absZ = Math.abs(z);
-        List<ChunkData> dataList;
+        List<T> dataList;
         try{
             dataList = dataMap.get(absX);
             if (dataList == null){
@@ -70,16 +72,72 @@ public class ChunkDataManager<T>{
         }catch(IndexOutOfBoundsException e){
             dataMap.set(absX, dataList = new ExpandableList<>());
         }
-        ChunkData cd;
+        T data;
         try{
-            cd = dataList.get(absZ);
-            if (cd == null){
-                dataList.set(absZ, cd = new ChunkData(world.getChunkAt(x, z)));
+            data = dataList.get(absZ);
+            if (data == null){
+                dataList.set(absZ, data = p.get());
             }
         }catch(IndexOutOfBoundsException e){
-            dataList.set(absZ, cd = new ChunkData(world.getChunkAt(x, z)));
+            dataList.set(absZ, data = p.get());
         }
-        return cd;
+        data.setX(x); data.setZ(z); data.setWorld(this.world);
+        data.load(dm.getOrNewFM(data.getX() + "." + data.getZ() + ".yml").getDataManager());
+        return data;
+    }
+    public void save(){
+        for (List<T> cdList : xz) {
+            if (cdList == null) {
+                continue;
+            }
+            for (T cd : cdList) {
+                if (cd == null) {
+                    continue;
+                }
+                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
+                cd.write(fm.getDataManager());
+                fm.save();
+            }
+        }
+        for (List<T> cdList : xz) {
+            if (cdList == null) {
+                continue;
+            }
+            for (T cd : cdList) {
+                if (cd == null) {
+                    continue;
+                }
+                FileManager fm = dm.getOrNewFM("-" + cd.getX() + "." + cd.getZ() + ".yml");
+                cd.write(fm.getDataManager());
+                fm.save();
+            }
+        }
+        for (List<T> cdList : x_z) {
+            if (cdList == null) {
+                continue;
+            }
+            for (T cd : cdList) {
+                if (cd == null) {
+                    continue;
+                }
+                FileManager fm = dm.getOrNewFM(cd.getX() + ".-" + cd.getZ() + ".yml");
+                cd.write(fm.getDataManager());
+                fm.save();
+            }
+        }
+        for (List<T> cdList : _x_z) {
+            if (cdList == null) {
+                continue;
+            }
+            for (T cd : cdList) {
+                if (cd == null) {
+                    continue;
+                }
+                FileManager fm = dm.getOrNewFM("-" + cd.getX() + ".-" + cd.getZ() + ".yml");
+                cd.write(fm.getDataManager());
+                fm.save();
+            }
+        }
     }
 
 
