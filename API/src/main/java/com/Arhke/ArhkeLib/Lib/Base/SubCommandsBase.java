@@ -29,10 +29,10 @@ public abstract class SubCommandsBase<T extends JavaPlugin> extends MainBase<T>{
 		super(instance);
 		this.commandName = commandName.toLowerCase();
 		this.dm = dm.getDataManager(commandName);
-		dm.isOrDefault(this.commandName, CommandAlias);
-		this.commandName = dm.getString(CommandAlias).toLowerCase();
+		this.dm.isOrDefault(this.commandName, CommandAlias);
+		this.commandName = this.dm.getString(CommandAlias).toLowerCase();
 		setDefaults();
-		dm.isOrDefault("/{0} {1} &7- &6this is the default help message", HelpKey);
+		this.dm.isOrDefault("/{0} {1} &7- &6this is the default help message", HelpKey);
 	}
 	/**
 	 * @return specifies the SubCommand Name that would be checked.

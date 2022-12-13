@@ -9,7 +9,7 @@ import org.bukkit.util.Vector;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-
+@SuppressWarnings("unused")
 public class DataManager extends Base {
     ConfigurationSection config;
 
@@ -90,8 +90,6 @@ public class DataManager extends Base {
     /**
      * Gets the boolean specified at the path.
      * Defaults false if path not found.
-     * @param path
-     * @return
      */
     public boolean getBoolean(String... path) {
         String pathString = pathOf(path);
@@ -103,8 +101,6 @@ public class DataManager extends Base {
     /**
      * Gets the int at the path.
      * Defaults to 0 if not found
-     * @param path
-     * @return
      */
     public int getInt(String... path){
         String pathString = pathOf(path);
@@ -116,9 +112,6 @@ public class DataManager extends Base {
     /**
      * Gets the int at the path.
      * Defaults to defInt if not found
-     * @param path
-     * @param defInt
-     * @return
      */
     public int getInt(int defInt, String... path){
         String pathString = pathOf(path);
@@ -169,9 +162,6 @@ public class DataManager extends Base {
     }
     /**
      * Gets the string at the specified "path" and translates the color code and {i} placeholders
-     * @param path
-     * @param objList
-     * @return
      */
     public String getTCM(String path, Object... objList){
         return tcm(getString(path), objList);
@@ -224,28 +214,23 @@ public class DataManager extends Base {
     }
     /**
      * returns Null if UUID doesnt exist
-     * @param path
-     * @return
      */
     @SuppressWarnings("ConstantConditions")
     public UUID getUUID(String... path){
         String pathString = pathOf(path);
-        if(config.isString(pathString)){
+        if(config.isString(pathString)) {
             try {
                 return UUID.fromString(config.getString(pathString));
-            }catch(IllegalArgumentException exception){
-                warn("Unable to load "+config.getString(pathString) + " into a UUID");
+            } catch (IllegalArgumentException exception) {
+                warn("Unable to load " + config.getString(pathString) + " into a UUID");
                 return null;
             }
-        }else{
-            warn("Unable to load path:"+pathString+"into a UUID");
+        } else {
             return null;
         }
     }
     /**
      * note this method doesnt fill in a default location
-     * @param path
-     * @return
      */
     @SuppressWarnings("ConstantConditions")
     public Location getLocation(String... path) {
@@ -265,6 +250,7 @@ public class DataManager extends Base {
         }
         return new Location(world, cs.getDouble(XKey), cs.getDouble(YKey), cs.getDouble(ZKey));
     }
+    @SuppressWarnings("ConstantConditions")
     public void setLocation(Location location, String... path){
         ConfigurationSection cs = getConfigurationSection(path);
         cs.set(WorldKey, location.getWorld().getName());

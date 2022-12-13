@@ -5,109 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86e31156-4df3-4cdd-a795-8a6389f337d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/HelpCommand/HelpMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/HelpCommand/HelpPerm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/CustomEventListeners/MoveChunkListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/Loadable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/Savable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/FOFF.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/ArhkeLib.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/ArhkeLib.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/Base.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/PluginBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/PluginBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/HelpCommand/HelpPerm.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/HelpCommand/HelpPerm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkData.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Configs/ConfigFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Configs/ConfigFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Configs/ConfigLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Configs/ConfigLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/ArmorEquipEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/ArmorEquipEvent1_8.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/ArmorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/ArmorType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/CustomEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/CustomEventListeners/ArmorEquipListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/MoveChunkEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/MoveChunkEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/DataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/DirectoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/DirectoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/YmlSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/YamlSerializable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Hook/Hook.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Hook/Hook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Hook/NBTItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Hook/Plugins.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Hook/Plugins.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/CustomEntityRegistry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/HelpMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/managergui/InventoryGui2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/DataManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/KingdomSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/KingdomSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/SQLCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/SQLCount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/SQLManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/SQLManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/SQLUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/SQLUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/UserSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/UserSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/Code.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/Code.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/SQLAsync.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/SQLAsync.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/SQLCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/SQLCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/SQLProcessEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/SQLProcessEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/SQLWait.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/sql/async/SQLWait.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector3D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/API-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/API-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/Base.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase$CommandType.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase$CommandType.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkData$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkData$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkData$PlayerContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkData$PlayerContainer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkData.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Configs/ConfigFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Configs/ConfigFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Configs/ConfigLoader.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Configs/ConfigLoader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/CustomEvents/MoveChunkEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/CustomEvents/MoveChunkEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/DataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/DataManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/DirectoryManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/DirectoryManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/YmlSerializable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/FileManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/Hook$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/Hook$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/Hook.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/Hook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/NBTItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/Plugins.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/Plugins.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/DataManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/SQLCount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/SQLManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/SQLUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/Table.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/async/Code.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/async/SQLAsync$SQLEventHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/async/SQLAsync$SQLProcessListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/async/SQLAsync.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/async/SQLCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/async/SQLProcessEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/async/SQLWait$SQLFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/sql/async/SQLWait.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/plugin.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector2D.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector2D.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector3D.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/API-2.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/API-2.0-SNAPSHOT-shaded.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-ArhkeLib-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_12_R2/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/v1_12_R2/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_12_R2/target/original-v1_12_R2-2.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_12_R2/target/v1_12_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_12_R2/target/v1_12_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_12_R2/target/v1_12_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_12_R2/target/v1_12_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_19_R2/src/main/java/com/Arhke/ArhkeLib/VDC/v19/IslandWither.java" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/src/main/java/com/Arhke/ArhkeLib/VDC/v19/IslandWither.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_8_8/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/v1_8_8/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_8_8/target/v1_8_8-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_8_8/target/v1_8_8-2.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

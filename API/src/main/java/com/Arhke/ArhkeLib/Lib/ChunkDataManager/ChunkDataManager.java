@@ -7,7 +7,9 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.function.Supplier;
 
 public class ChunkDataManager<T extends ChunkData>{
@@ -82,8 +84,11 @@ public class ChunkDataManager<T extends ChunkData>{
             dataList.set(absZ, data = p.get());
         }
         data.setX(x); data.setZ(z); data.setWorld(this.world);
-        data.load(dm.getOrNewFM(data.getX() + "." + data.getZ() + ".yml").getDataManager());
+        data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
         return data;
+    }
+    private T unFetchChunkData(List<List<T>> dataMap, int x, int z){
+        return null;
     }
     public void save(){
         for (List<T> cdList : xz) {
@@ -139,6 +144,9 @@ public class ChunkDataManager<T extends ChunkData>{
             }
         }
     }
+
+    Queue<T> offLoadQueue = new LinkedList<>();
+
 
 
 }

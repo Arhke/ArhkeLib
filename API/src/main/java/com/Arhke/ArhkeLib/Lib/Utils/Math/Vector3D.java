@@ -1,6 +1,9 @@
 package com.Arhke.ArhkeLib.Lib.Utils.Math;
 
-public class Vector3D {
+import com.Arhke.ArhkeLib.Lib.FileIO.DataManager;
+import com.Arhke.ArhkeLib.Lib.FileIO.YamlSerializable;
+
+public class Vector3D implements YamlSerializable {
     double x, y, z;
     public Vector3D(double x, double y, double z){
         this.x = x;
@@ -24,5 +27,19 @@ public class Vector3D {
     }
     public void setZ(double z){
         this.z = z;
+    }
+    public static String xKey = "x", yKey = "y", zKey = "z";
+    @Override
+    public void load(DataManager dataManager) {
+        x = dataManager.getDouble(0, xKey);
+        y = dataManager.getDouble(0, yKey);
+        z = dataManager.getDouble(0, zKey);
+    }
+
+    @Override
+    public void write(DataManager dataManager) {
+        dataManager.set(x, xKey);
+        dataManager.set(y, yKey);
+        dataManager.set(z, zKey);
     }
 }

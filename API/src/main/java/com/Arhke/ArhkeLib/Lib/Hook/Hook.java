@@ -15,11 +15,11 @@ import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import de.tr7zw.nbtapi.plugin.NBTAPI;
 import net.milkbowl.vault.economy.Economy;
-import net.milkbowl.vault.economy.EconomyResponse;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -76,6 +76,7 @@ public class Hook extends MainBase<JavaPlugin> {
 		if (economyProvider != null) {
 			econ = economyProvider.getProvider();
 		}
+
 		RegisteredServiceProvider<Permission> permissionProvider = Bukkit.getServer().getServicesManager().getRegistration(net.milkbowl.vault.permission.Permission.class);
 		if (permissionProvider != null) {
 			perm = permissionProvider.getProvider();
@@ -162,11 +163,11 @@ public class Hook extends MainBase<JavaPlugin> {
 	public boolean hasAccount(OfflinePlayer player) {
 		return this.econ.hasAccount(player);
 	}
-	public EconomyResponse depositMoney(OfflinePlayer player, double money) {
-		return econ.depositPlayer(player, money);
+	public boolean depositMoney(OfflinePlayer player, double money) {
+		return econ.depositPlayer(player, money).transactionSuccess();
 	}
-	public EconomyResponse withdrawMoney(OfflinePlayer player, double money){
-		return econ.withdrawPlayer(player, money);
+	public boolean withdrawMoney(OfflinePlayer player, double money){
+		return econ.withdrawPlayer(player, money).transactionSuccess();
 	}
 	public String getCurrencyPlural() {
 		return econ.currencyNamePlural();
@@ -256,49 +257,47 @@ public class Hook extends MainBase<JavaPlugin> {
 //	}
 //
 
-//	public boolean isLandProtected(Player p, Chunk c) {
-//		int y = p.getLocation().getBlockY();
-//		if(c == null){
-//			return false;
-//		}
-//		try{
-//			Block blocks[] = new Block[]{c.getBlock(0, y, 0)
-//					, c.getBlock(15, y, 0)
-//					, c.getBlock(15, y, 15)
-//					, c.getBlock(0, y, 15)
-//					, c.getBlock(8, y, 8)
-//					, c.getBlock(8, c.getWorld().getSeaLevel(), 8)
-//					, c.getBlock(0, c.getWorld().getSeaLevel(), 0)
-//					, c.getBlock(15, c.getWorld().getSeaLevel(), 0)
-//					, c.getBlock(15, c.getWorld().getSeaLevel(), 15)
-//					, c.getBlock(0, c.getWorld().getSeaLevel(), 15)};
-//			boolean containsOcean = true;
-//			for(Block b : blocks){
-//				if(b != null){
-//					if (!b.getBiome().name().contains("OCEAN")){
-//						containsOcean = false;
-//					}
-//					if(!canBuild(p, b)){
-//						return true;
-//					}
-//				}
-//			}
-//			if (containsOcean){
-//				return true;
-//			}
-//		}catch(Exception e){
-//			err(e.toString());
-//			return false;
-//		}
-//		return false;
-//	}
+	public boolean isLandProtected(Player p, Chunk c) {
+		int y = p.getLocation().getBlockY();
+		if(c == null){
+			return false;
+		}
+		try{
+			Block[] blocks = new Block[]{c.getBlock(0, y, 0)
+					, c.getBlock(15, y, 0)
+					, c.getBlock(15, y, 15)
+					, c.getBlock(0, y, 15)
+					, c.getBlock(8, y, 8)
+					, c.getBlock(8, c.getWorld().getSeaLevel(), 8)
+					, c.getBlock(0, c.getWorld().getSeaLevel(), 0)
+					, c.getBlock(15, c.getWorld().getSeaLevel(), 0)
+					, c.getBlock(15, c.getWorld().getSeaLevel(), 15)
+					, c.getBlock(0, c.getWorld().getSeaLevel(), 15)};
+			for(Block b : blocks){
+				if(!canBuild(p, b)){
+					return true;
+				}
+			}
+		}catch(Exception e){
+			err(e.toString());
+			return false;
+		}
+		return false;
+	}
 
 
 	//==============<Essentials>=========
 	public Essentials getEssentials(){
 		return this.essentials;
 	}
+	public void essentialsTeleport(Player p, Location loc){
+		try {
+			this.essentials.getUser(p).getTeleport().teleport(loc,null, PlayerTeleportEvent.TeleportCause.COMMAND);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
+	}
 
 	//==============<Cannons>=================
 	public Cannons getCannons(){

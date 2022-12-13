@@ -83,61 +83,6 @@ public abstract class ChunkData implements YamlSerializable {
         return marks;
     }
 
-	/*/**
-	 * Visually mark some land.
-	 * @param c
-	 * @param y
-	 * @deprecated
-	 *
-	public static void markChunk(Chunk c, int y) {
-		final Block blocks[] = new Block[]{c.getBlock(0, y, 0),
-				c.getBlock(2, y, 0),
-				c.getBlock(4, y, 0),
-				c.getBlock(6, y, 0),
-				c.getBlock(8, y, 0),
-				c.getBlock(10, y, 0),
-				c.getBlock(12, y, 0),
-				c.getBlock(14, y, 0),
-				c.getBlock(15, y, 1),
-				c.getBlock(15, y, 3),
-				c.getBlock(15, y, 5),
-				c.getBlock(15, y, 7),
-				c.getBlock(15, y, 9),
-				c.getBlock(15, y, 11),
-				c.getBlock(15, y, 13),
-				c.getBlock(15, y, 15),
-				c.getBlock(13, y, 15),
-				c.getBlock(11, y, 15),
-				c.getBlock(9, y, 15),
-				c.getBlock(7, y, 15),
-				c.getBlock(5, y, 15),
-				c.getBlock(3, y, 15),
-				c.getBlock(1, y, 15),
-				c.getBlock(0, y, 2),
-				c.getBlock(0, y, 4),
-				c.getBlock(0, y, 6),
-				c.getBlock(0, y, 8),
-				c.getBlock(0, y, 10),
-				c.getBlock(0, y, 12),
-				c.getBlock(0, y, 14)};
-		for(Block b : blocks){
-			if(b != null && b.getType().equals(Material.AIR)){
-				marks.add(b);
-				b.setType(Material.FENCE);
-			}
-		}
-		Bukkit.getScheduler().scheduleSyncDelayedTask(Feudal._feudal, new Runnable(){
-			@Override
-			public void run() {
-				for(Block b : blocks){
-					if(b != null && marks.contains(b)){
-						b.setType(Material.AIR);
-						marks.remove(b);
-					}
-				}
-			}
-		}, 150);
-	}*/
 
 
 

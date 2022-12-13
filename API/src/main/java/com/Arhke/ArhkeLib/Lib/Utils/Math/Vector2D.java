@@ -2,18 +2,15 @@ package com.Arhke.ArhkeLib.Lib.Utils.Math;
 
 
 import com.Arhke.ArhkeLib.Lib.FileIO.DataManager;
+import com.Arhke.ArhkeLib.Lib.FileIO.YamlSerializable;
 
-public class Vector2D {
+public class Vector2D implements YamlSerializable {
 
 	double _x;
 	double _z;
 
 
 	public static String XKey = "x", ZKey = "z";
-	public Vector2D(DataManager dm){
-		_x = dm.getDouble(XKey);
-		_z = dm.getDouble(ZKey);
-	}
 	public Vector2D(int x, int z) {
 		_x = x;
 		_z = z;
@@ -24,6 +21,13 @@ public class Vector2D {
 		_x = vector.getX();
 		_z = vector.getZ();
 	}
+
+	@Override
+	public void load(DataManager dm) {
+		_x = dm.getDouble(XKey);
+		_z = dm.getDouble(ZKey);
+	}
+
 	public void write(DataManager dm){
 		dm.set(_x, XKey);
 		dm.set(_z, ZKey);
@@ -39,10 +43,6 @@ public class Vector2D {
 	}
 	public void setZ (double z){
 		_z = z;
-	}
-	public double angle(Vector2D vector){
-//		Math.atan(this.)
-		return 0;
 	}
 
 }

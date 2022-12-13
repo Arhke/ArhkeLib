@@ -5,6 +5,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * FileManager for .yml files
@@ -18,9 +19,9 @@ public class FileManager extends Base {
     /**
      * Creates a FileManager for easier file management
      * @param file file object
-     * @throws Exception if code could not fix & create file
+     * @throws RuntimeException if code could not fix & create file
      */
-    public FileManager(File file) throws Exception{
+    public FileManager(File file) throws RuntimeException{
         makeFile(file);
         this.config = YamlConfiguration.loadConfiguration(file);
         this.file = file;
@@ -111,14 +112,24 @@ public class FileManager extends Base {
      * @param file file to create or make sure exists
      * @throws Exception if file cannot be made
      */
-    public static void makeFile(File file) throws Exception{
+    public static void makeFile(File file) throws RuntimeException{
         if (!file.exists()) {
             boolean b = file.getParentFile().mkdirs();
-            if (!file.createNewFile()) {
-                throw new Exception();
+            try {
+                if (!file.createNewFile()) {
+                    except("");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } else if (!file.isFile() && (!file.delete() || !file.createNewFile())) {
-            throw new Exception();
+        } else {
+            try {
+                if (!file.isFile() && (!file.delete() || !file.createNewFile())) {
+                    except("");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -24,11 +24,11 @@ public class HelpPerm {
 
     protected boolean hasPermission(Permissible p) {
         for (String perm : permissions) {
-            if (p.hasPermission(perm)) {
-                return true;
+            if (!p.hasPermission(perm)) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
     public String getMsg() {
         return message;

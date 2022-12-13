@@ -67,7 +67,7 @@ public abstract class CommandsBase<T extends JavaPlugin> extends MainBase<T> imp
     }
     public abstract void setDefaults();
     private void setHelpBuilder(HelpPerm hp){
-        hp.setMsg(tcm(hp.getMsg(), this.getCmd()));
+        helpMessage.addMessage(tcm(hp.getMsg(), this.getCmd()));
     }
     protected boolean processSubCommands(CommandSender sender, String[] args) {
         if(args.length == 0){
