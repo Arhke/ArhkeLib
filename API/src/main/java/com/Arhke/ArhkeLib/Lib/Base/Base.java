@@ -2,7 +2,7 @@ package com.Arhke.ArhkeLib.Lib.Base;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -62,6 +62,17 @@ public abstract class Base {
             return place + "th";
         }
     }
+    public static String clickcableButton(){
+//        BaseComponent[] component =
+//                new ComponentBuilder("Hello ").color(net.md_5.bungee.api.ChatColor.RED)
+//                        .append("world").color(net.md_5.bungee.api.ChatColor.DARK_RED).bold(true)
+//                        .append("!").color(net.md_5.bungee.api.ChatColor.RED).create();
+//        TextComponent message = new TextComponent("Click me");
+//        message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.spigotmc.org"));
+//        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Visit the Spigot website!").create()));
+    return "";
+    }
+
 
 
     //reflection

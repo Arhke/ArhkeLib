@@ -17,6 +17,7 @@ public class ChunkDataManager<T extends ChunkData>{
     List<List<T>> x_z = new ExpandableList<>();
     List<List<T>> _xz = new ExpandableList<>();
     List<List<T>> _x_z = new ExpandableList<>();
+    Queue<T> offLoadQueue = new LinkedList<>();
     final World world;
     final DirectoryManager dm;
     final Supplier<T> p;
@@ -85,10 +86,51 @@ public class ChunkDataManager<T extends ChunkData>{
         }
         data.setX(x); data.setZ(z); data.setWorld(this.world);
         data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
+        offLoadQueue.add(data);
         return data;
     }
-    private T unFetchChunkData(List<List<T>> dataMap, int x, int z){
-        return null;
+    private FileManager unFetchChunkData(List<List<T>> dataMap, int x, int z){
+        int absX = Math.abs(x);
+        int absZ = Math.abs(z);
+        List<T> dataList;
+        try{
+            dataList = dataMap.remove(absX);
+            if (dataList == null){
+                return null;
+            }
+        }catch(IndexOutOfBoundsException e){
+            return null;
+        }
+        T data;
+        try{
+            data = dataList.remove(absZ);
+            if (data == null){
+                return null;
+            }
+        }catch(IndexOutOfBoundsException e){
+            return null;
+        }
+
+        return dm.getOrNewFM(x + "." + z + ".yml");
+    }
+    public FileManager removeChunkData(int x, int z){
+        if (x >= 0){
+            if (z >= 0){
+                return unFetchChunkData(xz, x, z);
+
+            }else {
+                return unFetchChunkData(x_z, x, z);
+            }
+        }else{
+            if(z >= 0){
+                return unFetchChunkData(_xz, x, z);
+            }else {
+                return unFetchChunkData(_x_z, x, z);
+            }
+        }
+    }
+    public Queue<T> getOffLoadQueue(){
+        return this.offLoadQueue;
     }
     public void save(){
         for (List<T> cdList : xz) {
@@ -145,7 +187,6 @@ public class ChunkDataManager<T extends ChunkData>{
         }
     }
 
-    Queue<T> offLoadQueue = new LinkedList<>();
 
 
 

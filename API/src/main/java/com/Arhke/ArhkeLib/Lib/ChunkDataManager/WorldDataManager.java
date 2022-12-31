@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,9 +55,44 @@ public class WorldDataManager<T extends ChunkData> extends MainBase<JavaPlugin> 
         }
         return cdm;
     }
+    public T getRelative(T start, Relative rel){
+        return getOrNewChunkData(start.getWorld(), start.getX() + rel.getX(), start.getZ() + rel.getZ());
+    }
+    public FileManager removeChunkData(World world, int x, int z){
+        ChunkDataManager<T> cdm = worldData.get(world.getName());
+        if (cdm == null){
+            return null;
+        }
+        return cdm.removeChunkData(x, z);
+    }
+    public FileManager removeChunkData(ChunkData cd){
+        return removeChunkData(cd.getWorld(), cd.getX(), cd.getZ());
+    }
+    public Collection<ChunkDataManager<T>> getChunkDataManagers(){
+        return this.worldData.values();
+    }
     public void saveAllChunkData(){
         worldData.values().forEach(ChunkDataManager::save);
     }
 
+    public enum Relative{
+        UP(0,1),
+        DOWN(0,-1),
+        RIGHT(1,0),
+        LEFT(0,-1);
+        final int x, z;
+        Relative(int x, int z){
+            this.x = x;
+            this.z = z;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getZ() {
+            return z;
+        }
+    }
 
 }

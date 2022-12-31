@@ -1,6 +1,8 @@
 //package com.Arhke.ArhkeLib.VDC.v19;
 //
 //import net.minecraft.server.level.ServerLevel;
+//import net.minecraft.world.Difficulty;
+//import net.minecraft.world.damagesource.DamageSource;
 //import net.minecraft.world.entity.EntityType;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -9,8 +11,10 @@
 //import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 //import net.minecraft.world.entity.boss.wither.WitherBoss;
 //import net.minecraft.world.entity.player.Player;
+//import org.bukkit.Bukkit;
 //import org.bukkit.Location;
-//import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
+//import org.bukkit.craftbukkit.v1_19_R2.CraftWorld;
+//import org.bukkit.event.entity.EntityTargetEvent;
 //
 //import java.util.Objects;
 //
@@ -36,6 +40,17 @@
 //        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
 //        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, false, false));
 //
+//    }
+//    protected void dropCustomDeathLoot(DamageSource damagesource, int i, boolean flag) {
+//
+//    }
+//    public boolean canAttack(LivingEntity entityliving) {
+//        if(!entityliving.isInvulnerable() && entityliving.canBeSeenByAnyone()){
+//            EntityTargetEvent ete = new EntityTargetEvent(this.getBukkitEntity(), entityliving.getBukkitEntity(), EntityTargetEvent.TargetReason.RANDOM_TARGET);
+//            Bukkit.getPluginManager().callEvent(ete);
+//            return !ete.isCancelled();
+//        }
+//        return false;
 //    }
 ////    protected void customServerAiStep() {
 ////        int i;
