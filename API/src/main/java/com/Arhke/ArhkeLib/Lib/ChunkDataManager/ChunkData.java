@@ -157,7 +157,7 @@ public abstract class ChunkData implements YamlSerializable {
             if(b.getType().equals(Material.AIR)){
                 if(!marks.contains(b)) {
                     marks.add(b);
-                    p.sendBlockChange(b.getLocation(), Material.WHITE_WOOL, (byte) 0);
+                    p.sendBlockChange(b.getLocation(), Material.WHITE_WOOL.createBlockData());
                     //b.setType(Material.WOOL);
                 }
             }
