@@ -99,7 +99,6 @@ public abstract class ChunkData implements YamlSerializable {
         return Math.pow((land.getX()-x), 2) + Math.pow((land.getZ()-z), 2);
     }
 
-    @SuppressWarnings("deprecation")
     public void show(Player p) {
 
         List<PlayerContainer> remove = new ArrayList<PlayerContainer>();
@@ -158,7 +157,6 @@ public abstract class ChunkData implements YamlSerializable {
                 if(!marks.contains(b)) {
                     marks.add(b);
                     p.sendBlockChange(b.getLocation(), Material.WHITE_WOOL.createBlockData());
-                    //b.setType(Material.WOOL);
                 }
             }
         }
@@ -167,7 +165,7 @@ public abstract class ChunkData implements YamlSerializable {
             public void run() {
                 for(Block b : blocks){
                     if(marks.contains(b)){
-                        p.sendBlockChange(b.getLocation(), b.getType(), b.getData());
+                        p.sendBlockChange(b.getLocation(), b.getType().createBlockData());
                         marks.remove(b);
                     }
                 }
@@ -177,8 +175,8 @@ public abstract class ChunkData implements YamlSerializable {
     }
     private static class PlayerContainer{
 
-        private UUID uuid;
-        private ChunkData cData;
+        private final UUID uuid;
+        private final ChunkData cData;
 
         public PlayerContainer(UUID uuid, ChunkData land) {
             this.uuid = uuid;
@@ -187,9 +185,7 @@ public abstract class ChunkData implements YamlSerializable {
 
         public boolean equals(Object object) {
             if(object instanceof PlayerContainer) {
-                if(uuid.equals(((PlayerContainer) object).uuid) && cData.equals(((PlayerContainer) object).cData)) {
-                    return true;
-                }
+                return uuid.equals(((PlayerContainer) object).uuid) && cData.equals(((PlayerContainer) object).cData);
             }
             return false;
         }
