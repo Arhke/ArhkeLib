@@ -6,19 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="86e31156-4df3-4cdd-a795-8a6389f337d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/API-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/API-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/API-2.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/API-2.0-SNAPSHOT-shaded.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-ArhkeLib-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

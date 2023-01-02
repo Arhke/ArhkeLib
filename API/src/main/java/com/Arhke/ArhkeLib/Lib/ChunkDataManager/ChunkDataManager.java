@@ -157,7 +157,7 @@ public class ChunkDataManager<T extends ChunkData>{
                 if (cd == null) {
                     continue;
                 }
-                FileManager fm = dm.getOrNewFM("-" + cd.getX() + "." + cd.getZ() + ".yml");
+                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
                 cd.write(fm.getDataManager());
                 fm.save();
             }
@@ -170,7 +170,7 @@ public class ChunkDataManager<T extends ChunkData>{
                 if (cd == null) {
                     continue;
                 }
-                FileManager fm = dm.getOrNewFM(cd.getX() + ".-" + cd.getZ() + ".yml");
+                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
                 cd.write(fm.getDataManager());
                 fm.save();
             }
@@ -183,7 +183,7 @@ public class ChunkDataManager<T extends ChunkData>{
                 if (cd == null) {
                     continue;
                 }
-                FileManager fm = dm.getOrNewFM("-" + cd.getX() + ".-" + cd.getZ() + ".yml");
+                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
                 cd.write(fm.getDataManager());
                 fm.save();
             }
