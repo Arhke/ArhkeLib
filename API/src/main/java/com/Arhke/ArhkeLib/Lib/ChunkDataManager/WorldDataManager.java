@@ -79,7 +79,7 @@ public class WorldDataManager<T extends ChunkData> extends MainBase<JavaPlugin> 
         UP(0,1),
         DOWN(0,-1),
         RIGHT(1,0),
-        LEFT(0,-1);
+        LEFT(-1,0);
         final int x, z;
         Relative(int x, int z){
             this.x = x;
