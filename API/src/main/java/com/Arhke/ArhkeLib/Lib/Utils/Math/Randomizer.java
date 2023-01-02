@@ -13,11 +13,11 @@ import java.util.Random;
  */
 public class Randomizer<T> {
 
-    private Random rand;
-    private Map<T, Integer> content = new HashMap<T, Integer>();
+    private final Random rand;
+    private final Map<T, Integer> content = new HashMap<T, Integer>();
 
-    public Randomizer(Random rand) {
-        this.rand = rand;
+    public Randomizer() {
+        this.rand = new Random();
     }
 
     /**

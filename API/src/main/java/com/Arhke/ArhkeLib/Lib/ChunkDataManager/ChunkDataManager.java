@@ -80,12 +80,15 @@ public class ChunkDataManager<T extends ChunkData>{
             data = dataList.get(absZ);
             if (data == null){
                 dataList.set(absZ, data = p.get());
+                data.setX(x); data.setZ(z); data.setWorld(this.world);
+                data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
             }
         }catch(IndexOutOfBoundsException e){
             dataList.set(absZ, data = p.get());
+            data.setX(x); data.setZ(z); data.setWorld(this.world);
+            data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
         }
-        data.setX(x); data.setZ(z); data.setWorld(this.world);
-        data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
+
         offLoadQueue.add(data);
         return data;
     }
