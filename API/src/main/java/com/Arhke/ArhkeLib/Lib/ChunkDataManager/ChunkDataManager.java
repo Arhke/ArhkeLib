@@ -7,10 +7,13 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.function.Supplier;
+
+import static com.Arhke.ArhkeLib.Lib.Base.Base.bc;
 
 public class ChunkDataManager<T extends ChunkData>{
     List<List<T>> xz = new ExpandableList<>();
@@ -33,19 +36,19 @@ public class ChunkDataManager<T extends ChunkData>{
      * @param z Chunk z coordinates
      * @return <b>ChunkData</b> of the chunk for the given chunk
      */
-    public T getChunkData(int x, int z) {
+    public T getChunkData(int x, int z, boolean createNew) {
         if (x >= 0){
             if (z >= 0){
-                return fetchChunkData(xz, x, z);
+                return fetchChunkData(xz, x, z, createNew);
 
             }else {
-                return fetchChunkData(x_z, x, z);
+                return fetchChunkData(x_z, x, z, createNew);
             }
         }else{
             if(z >= 0){
-                return fetchChunkData(_xz, x, z);
+                return fetchChunkData(_xz, x, z, createNew);
             }else {
-                return fetchChunkData(_x_z, x, z);
+                return fetchChunkData(_x_z, x, z, createNew);
             }
         }
     }
@@ -53,17 +56,17 @@ public class ChunkDataManager<T extends ChunkData>{
      * @param c Bukkit Chunk Object specifying location of the data
      * @return <b>ChunkData</b> of the chunk for the given chunk
      */
-    public T getChunkData(Chunk c) {
-        return getChunkData(c.getX(), c.getZ());
+    public T getChunkData(Chunk c, boolean createNew) {
+        return getChunkData(c.getX(), c.getZ(), createNew);
     }
     /**
      * @param loc Bukkit Location Object specifying location of the data
      * @return <b>ChunkData</b> of the chunk for the given chunk
      */
-    public T getChunkData(Location loc) {
-        return getChunkData(loc.getChunk());
+    public T getChunkData(Location loc, boolean createNew) {
+        return getChunkData(loc.getChunk(), createNew);
     }
-    private T fetchChunkData(List<List<T>> dataMap, int x, int z){
+    private T fetchChunkData(List<List<T>> dataMap, int x, int z, boolean createNew){
         int absX = Math.abs(x);
         int absZ = Math.abs(z);
         List<T> dataList;
@@ -79,17 +82,19 @@ public class ChunkDataManager<T extends ChunkData>{
         try{
             data = dataList.get(absZ);
             if (data == null){
+                if(dm.getOrLoadFM(x + "." + z + ".yml") == null && !createNew) return null;
                 dataList.set(absZ, data = p.get());
                 data.setX(x); data.setZ(z); data.setWorld(this.world);
                 data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
+                offLoadQueue.add(data);
             }
         }catch(IndexOutOfBoundsException e){
+            if(dm.getOrLoadFM(x + "." + z + ".yml") == null && !createNew) return null;
             dataList.set(absZ, data = p.get());
             data.setX(x); data.setZ(z); data.setWorld(this.world);
             data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
+            offLoadQueue.add(data);
         }
-
-        offLoadQueue.add(data);
         return data;
     }
     private FileManager unFetchChunkData(List<List<T>> dataMap, int x, int z){
@@ -146,7 +151,12 @@ public class ChunkDataManager<T extends ChunkData>{
                 }
                 FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
                 cd.write(fm.getDataManager());
-                fm.save();
+                if (fm.getDataManager().getConfig().getKeys(true).size() != 0 ){
+                    fm.save();
+                }else{
+                    fm.deleteFile();
+                }
+
             }
         }
         for (List<T> cdList : xz) {
@@ -159,7 +169,11 @@ public class ChunkDataManager<T extends ChunkData>{
                 }
                 FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
                 cd.write(fm.getDataManager());
-                fm.save();
+                if (fm.getDataManager().getConfig().getKeys(true).size() != 0 ){
+                    fm.save();
+                }else{
+                    fm.deleteFile();
+                }
             }
         }
         for (List<T> cdList : x_z) {
@@ -172,7 +186,11 @@ public class ChunkDataManager<T extends ChunkData>{
                 }
                 FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
                 cd.write(fm.getDataManager());
-                fm.save();
+                if (fm.getDataManager().getConfig().getKeys(true).size() != 0 ){
+                    fm.save();
+                }else{
+                    fm.deleteFile();
+                }
             }
         }
         for (List<T> cdList : _x_z) {
@@ -185,7 +203,11 @@ public class ChunkDataManager<T extends ChunkData>{
                 }
                 FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
                 cd.write(fm.getDataManager());
-                fm.save();
+                if (fm.getDataManager().getConfig().getKeys(true).size() != 0 ){
+                    fm.save();
+                }else{
+                    fm.deleteFile();
+                }
             }
         }
     }

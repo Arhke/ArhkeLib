@@ -6,6 +6,231 @@
   <component name="ChangeListManager">
     <list default="true" id="86e31156-4df3-4cdd-a795-8a6389f337d2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/HelpCommand/HelpMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/HelpCommand/HelpMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/PluginBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/PluginBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/API-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/API-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/PluginBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/PluginBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase$CommandType.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase$CommandType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ConfigLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/CommandHelp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/CustomCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/CustomHelpPermissions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/RTPCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/AllyCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/BanTimeCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/BanTimeGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/ChunkCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/ClaimCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/DemoteCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/DepositCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/DescriptionCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/HomeCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/KickMemCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/KingdomChatCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/LeaderCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/NeutralCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/PlayerInviteCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/PlayerJoinCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/PromoteCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/SetOpenCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/SpawnCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/TownBankCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/TownCreateCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/TownDisbandCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/TownInfoCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/TownLeaderCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/TownLeaveCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/TownListCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/UnclaimCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/WithdrawCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/admin/ForceWinCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/admin/KingdomLogCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/admin/ReloadCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/admin/ResetCharacterCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/admin/SetProfessionLevelCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/admin/SetReputationCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/character/ChangeProfessionCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/character/CharacterCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/character/OnlineCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/console/ServerChangeReputationCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/console/ServerEditXPLevelCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/console/ServerReloadCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/other/AboutCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/other/HelpCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/other/TutorialCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommand/other/UnenchantCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Commands/TownCommands.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/DistrictListeners.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/TUsers/TUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/TUsers/TUserManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/Updates.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/configs/CommandConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/configs/Configuration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/configs/Language.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/core/EventManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/core/Feudal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/Battle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/BattleManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/CustomEntityRegistry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/Hourly.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/IslandWither.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/Kingdom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/KingdomLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/KingdomsManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/LandManagement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/Raid.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/Rank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/Shield.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/Town.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/kingdoms/TownsManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/placeholders/FeudalPlaceholder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/spar/Spar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/spar/Sparing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/Base64.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/ErrorManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/Metrics.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/NameTag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/OldPotion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/OnlineTime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/Potion1_12.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/Randomizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/StackUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/Utils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/Utils1_9.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/District/util/UtilsAbove1_7.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/CraftItem/CustomItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/CraftItem/CustomItemManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/CraftItem/EquipmentType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/Enumeration/MatchType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/FurnitureMapping/CauldronFurniture.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/FurnitureMapping/Furniture.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/FurnitureMapping/FurnitureType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/FurnitureMapping/Smeltery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/FurnitureMapping/Tannery.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/Recipe/Recipe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/Recipe/RecipeManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/TechCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/utils/Utility.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/ItemSystem/utils/WrappedLocation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/ArmorTags.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Base/Base.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Base/CommandsBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Base/MainBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Base/SubCommandsBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/ChunkDataManager/ChunkData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/ChunkDataManager/ChunkDataManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/ChunkDataManager/WorldDataManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/CustomEvents/CustomEventListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/CustomEvents/MoveChunkEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/FileIO/ConfigManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/FileIO/DataManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/FileIO/DirectoryManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/FileIO/FileManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/GUI/GUIManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/GUI/InventoryGui.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Hook/Hook.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Utils/Direction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Utils/Direction3D.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Utils/ExpandableList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Utils/HelpMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Utils/RayTrace.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Utils/Vector2D.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/Utils/Vector3D.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/managergui/InventoryGui2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/managergui/InviteMembers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/managergui/ManagerMember.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/managergui/ManagerMembers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/managergui/ManagerMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/managergui/ManagerWar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/managergui/ManagerWarList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/DataManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/KingdomSave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/MySQL.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/SQLControl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/SQLCount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/SQLManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/SQLTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/SQLThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/SQLUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/SQLite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/Table.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/UserSave.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/async/AsyncSQLThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/async/Code.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/async/SQLAsync.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/async/SQLCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/async/SQLProcessEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Lib/sql/async/SQLWait.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Listeners.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/java/com/Arhke/WRCore/PlaceHolder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/resources/District/config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/resources/Helper.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/resources/ItemSystem/CustomItem/Steel.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/resources/ItemSystem/CustomItem/WraithHide.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/resources/ItemSystem/Materials.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/resources/ItemSystem/Recipe/SteelRecipe.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/WRCore/src/main/resources/plugin.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/Commands.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/exceptions/InvalidPortException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/listeners/PortUseEvents.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/ports/Port.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/ports/PortLibrary.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/ports/PortShelf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/settings/MetricsLite$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/settings/MetricsLite$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/settings/MetricsLite$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/settings/MetricsLite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/settings/Settings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/settings/UpdateManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/net/johnbrooks/ports/utils/WorldEditUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/bin/plugin.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/config.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/Commands.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/exceptions/InvalidPortException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/listeners/PortUseEvents.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/ports/Port.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/ports/PortLibrary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/ports/PortShelf.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/settings/MetricsLite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/settings/Settings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/settings/UpdateManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/net/johnbrooks/ports/utils/WorldEditUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Desktop/shellext.dll/ports-master/src/plugin.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/API-2.0-SNAPSHOT-shaded.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/API-2.0-SNAPSHOT-shaded.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-ArhkeLib-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

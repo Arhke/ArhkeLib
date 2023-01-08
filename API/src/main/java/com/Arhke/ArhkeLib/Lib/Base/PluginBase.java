@@ -41,6 +41,7 @@ public abstract class PluginBase extends JavaPlugin {
                 continue;
             }
             pc.setExecutor(command);
+            pc.setTabCompleter(command);
 
         }
 

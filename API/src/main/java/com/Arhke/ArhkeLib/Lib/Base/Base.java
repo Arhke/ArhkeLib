@@ -22,25 +22,27 @@ public abstract class Base {
     static boolean isPlaceholderAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null;
     static Random rand = new Random();
     public static String tcm(String msg, Object... objList){
-        String ret = msg
-                .replace('&', ChatColor.COLOR_CHAR)
-                .replace("\\n", "\n")
-                .replace(ChatColor.COLOR_CHAR+""+ChatColor.COLOR_CHAR,ChatColor.COLOR_CHAR+"");
+        String ret = msg;
         for (int i = 0; i < objList.length; i++){
             ret = ret.replace("{"+i+"}", objList[i].toString());
         }
+        ret = ret.replace('&', ChatColor.COLOR_CHAR)
+                .replace("\\n", "\n")
+                .replace('_',' ')
+                .replace(ChatColor.COLOR_CHAR+""+ChatColor.COLOR_CHAR,"&");
 
 
         return ret;
     }
     public static String tcm(OfflinePlayer p, String msg, Object... objList){
-        String ret = msg
-                .replace('&', ChatColor.COLOR_CHAR)
-                .replace("\\n", "\n")
-                .replace(ChatColor.COLOR_CHAR+""+ChatColor.COLOR_CHAR,ChatColor.COLOR_CHAR+"");
+        String ret = msg;
         for (int i = 0; i < objList.length; i++){
             ret = ret.replace("{"+i+"}", objList[i].toString());
         }
+        ret = ret.replace('&', ChatColor.COLOR_CHAR)
+                .replace("\\n", "\n")
+                .replace('_',' ')
+                .replace(ChatColor.COLOR_CHAR+""+ChatColor.COLOR_CHAR,"&");
         if(isPlaceholderAPI) return ret;
         return PlaceholderAPI.setPlaceholders(p, ret);
     }

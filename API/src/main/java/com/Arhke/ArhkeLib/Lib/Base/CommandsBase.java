@@ -4,8 +4,10 @@ package com.Arhke.ArhkeLib.Lib.Base;
 import com.Arhke.ArhkeLib.Lib.Base.HelpCommand.HelpMessage;
 import com.Arhke.ArhkeLib.Lib.Base.HelpCommand.HelpPerm;
 import com.Arhke.ArhkeLib.Lib.FileIO.ConfigManager;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,7 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public abstract class CommandsBase<T extends JavaPlugin> extends MainBase<T> implements CommandExecutor {
+public abstract class CommandsBase<T extends JavaPlugin> extends MainBase<T> implements CommandExecutor, TabCompleter {
     protected final String commandName;
     protected String[] helpString = new String[0];
     protected final HelpMessage helpMessage;
@@ -45,7 +47,51 @@ public abstract class CommandsBase<T extends JavaPlugin> extends MainBase<T> imp
             subcommand.addHelpMessage(this::setHelpBuilder);
         }
     }
+    @Override
+    @SuppressWarnings("NullableProblems")
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        List<String> ret = new ArrayList<>();
+        if(args.length == 1){
+            if(sender instanceof Player) {
+                this.subCommands.stream()
+                        .filter((sub)->sub.getType() == SubCommandsBase.CommandType.PLAYER)
+                        .forEach((sub)->ret.add(sub.getCommandName()));
+            }else{
+                this.subCommands.stream()
+                        .filter((sub)->sub.getType() == SubCommandsBase.CommandType.SERVER)
+                        .forEach((sub)->ret.add(sub.getCommandName()));
+            }
+            ret.add("help");
+            ret.removeIf((tab)->!tab.startsWith(args[0]));
+        }else{
+            if(args[0].equalsIgnoreCase("help") && args.length == 2){
+                int max = helpMessage.getHelpPermList().size() / helpMessage.getLinePerPage();
+                for(int i = 0; i <= max; i++){
+                    ret.add(i+1+"");
+                }
+                return ret;
+            }
+            if(sender instanceof Player){
+                Player p = (Player) sender;
+                for(SubCommandsBase<T> subCmd: this.subCommands){
+                    if(subCmd.getType().equals(SubCommandsBase.CommandType.PLAYER)&&
+                            subCmd.getCommandName().equalsIgnoreCase(args[0]) ){
+                        return subCmd.tab(args, p);
+                    }
+                }
+            }else{
+                for(SubCommandsBase<T> subCmd: this.subCommands){
+                    if(subCmd.getType().equals(SubCommandsBase.CommandType.SERVER)&&
+                            subCmd.getCommandName().equalsIgnoreCase(args[1])){
+                        return subCmd.tab(args, null);
+                    }
+                }
+            }
 
+
+        }
+        return ret;
+    }
     public String getCmd() {
         return commandName;
     }
@@ -59,9 +105,14 @@ public abstract class CommandsBase<T extends JavaPlugin> extends MainBase<T> imp
         return helpString;
     }
     public void sendHelp(@Nonnull CommandSender sender, int page){
+
         if(page == 0){
-            sender.sendMessage(this.helpString);
-            return;
+            if(this.helpString.length == 0){
+                page = 1;
+            }else {
+                sender.sendMessage(this.helpString);
+                return;
+            }
         }
         sender.sendMessage(this.helpMessage.getMessage(sender, page));
     }
@@ -91,12 +142,19 @@ public abstract class CommandsBase<T extends JavaPlugin> extends MainBase<T> imp
             }
         }
         if(args[0].equalsIgnoreCase("help")){
-            int page;
-            if (args.length >= 2 && (page = Integer.parseInt(args[1])) > 0){
-                sendHelp(sender, page);
-            }else{
-                sendHelp(sender, 0);
+
+            int page = 0;
+            if (args.length >= 2){
+                try {
+                     page = Integer.parseInt(args[1]);
+                     if(page <= 0){
+                         page = 1;
+                     }
+                }catch(NumberFormatException e){
+                    page = 1;
+                }
             }
+            sendHelp(sender, page);
             return true;
         }
         return false;

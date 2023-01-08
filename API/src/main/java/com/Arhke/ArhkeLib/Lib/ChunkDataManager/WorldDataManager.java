@@ -27,26 +27,26 @@ public class WorldDataManager<T extends ChunkData> extends MainBase<JavaPlugin> 
 
 
 //    ###################Data Retrievers################
-    public T getData(World world, int x, int z){
+    public T getData(World world, int x, int z, boolean createNew){
         ChunkDataManager<T> cdm = worldData.get(world.getName());
         if (cdm == null) return null;
-        return cdm.getChunkData(x, z);
+        return cdm.getChunkData(x, z, createNew);
     }
 
-    public T getData(Chunk c){
-        return getData(c.getWorld(), c.getX(), c.getZ());
+    public T getData(Chunk c, boolean createNew){
+        return getData(c.getWorld(), c.getX(), c.getZ(), createNew);
     }
-    public  T getData(Location location){
-        return getData(location.getChunk());
+    public  T getData(Location location, boolean createNew){
+        return getData(location.getChunk(), createNew);
     }
-    public T getOrNewChunkData(World world, int x, int z){
-        return getOrNewChunkDataManager(world).getChunkData(x, z);
+    public T getOrNewChunkData(World world, int x, int z, boolean createNew){
+        return getOrNewChunkDataManager(world).getChunkData(x, z, createNew);
     }
-    public T getOrNewChunkData(Chunk c){
-        return getOrNewChunkData(c.getWorld(), c.getX(), c.getZ());
+    public T getOrNewChunkData(Chunk c, boolean createNew){
+        return getOrNewChunkData(c.getWorld(), c.getX(), c.getZ(), createNew);
     }
-    public T getOrNewChunkData(Location location){
-        return getOrNewChunkData(location.getChunk());
+    public T getOrNewChunkData(Location location, boolean createNew){
+        return getOrNewChunkData(location.getChunk(), createNew);
     }
     public ChunkDataManager<T> getOrNewChunkDataManager(World world){
         ChunkDataManager<T> cdm = worldData.get(world.getName());
@@ -55,8 +55,8 @@ public class WorldDataManager<T extends ChunkData> extends MainBase<JavaPlugin> 
         }
         return cdm;
     }
-    public T getRelative(T start, Relative rel){
-        return getOrNewChunkData(start.getWorld(), start.getX() + rel.getX(), start.getZ() + rel.getZ());
+    public T getRelative(T start, Relative rel, boolean createNew){
+        return getOrNewChunkData(start.getWorld(), start.getX() + rel.getX(), start.getZ() + rel.getZ(), createNew);
     }
     public FileManager removeChunkData(World world, int x, int z){
         ChunkDataManager<T> cdm = worldData.get(world.getName());
