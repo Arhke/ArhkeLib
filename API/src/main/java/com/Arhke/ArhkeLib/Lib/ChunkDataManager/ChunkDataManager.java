@@ -83,15 +83,21 @@ public class ChunkDataManager<T extends ChunkData>{
             data = dataList.get(absZ);
             if (data == null){
                 if(dm.getOrLoadFM(x + "." + z + ".yml") == null && !createNew) return null;
+
                 dataList.set(absZ, data = p.get());
+                bc("added " + x + " " + z);
                 data.setX(x); data.setZ(z); data.setWorld(this.world);
+                bc("added check, " + dataMap.get(absX).get(absZ).getX() + " " +  dataMap.get(absX).get(absZ).getZ());
                 data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
                 offLoadQueue.add(data);
             }
         }catch(IndexOutOfBoundsException e){
             if(dm.getOrLoadFM(x + "." + z + ".yml") == null && !createNew) return null;
             dataList.set(absZ, data = p.get());
+            bc("added " + x + " " + z);
+
             data.setX(x); data.setZ(z); data.setWorld(this.world);
+            bc("added check, " + dataMap.get(absX).get(absZ).getX() + " " +  dataMap.get(absX).get(absZ).getZ());
             data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
             offLoadQueue.add(data);
         }
@@ -101,38 +107,53 @@ public class ChunkDataManager<T extends ChunkData>{
         int absX = Math.abs(x);
         int absZ = Math.abs(z);
         List<T> dataList;
+        bc("f");
         try{
-            dataList = dataMap.remove(absX);
+            dataList = dataMap.get(absX);
+            bc("g");
             if (dataList == null){
+                bc("h");
                 return null;
             }
         }catch(IndexOutOfBoundsException e){
+            bc("i");
             return null;
         }
         T data;
         try{
-            data = dataList.remove(absZ);
+            bc("j");
+            data = dataList.set(absZ, null);
             if (data == null){
+                bc("k");
                 return null;
             }
         }catch(IndexOutOfBoundsException e){
+            bc("l");
             return null;
         }
-
+        bc("m");
         return dm.getOrNewFM(x + "." + z + ".yml");
     }
     public FileManager removeChunkData(int x, int z){
         if (x >= 0){
             if (z >= 0){
+                bc("c");
+
                 return unFetchChunkData(xz, x, z);
 
             }else {
+                bc("d");
+
                 return unFetchChunkData(x_z, x, z);
             }
         }else{
             if(z >= 0){
+                bc("e");
+
                 return unFetchChunkData(_xz, x, z);
             }else {
+                bc("f");
+
                 return unFetchChunkData(_x_z, x, z);
             }
         }

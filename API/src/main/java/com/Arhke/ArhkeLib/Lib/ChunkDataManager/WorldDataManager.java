@@ -60,9 +60,12 @@ public class WorldDataManager<T extends ChunkData> extends MainBase<JavaPlugin> 
     }
     public FileManager removeChunkData(World world, int x, int z){
         ChunkDataManager<T> cdm = worldData.get(world.getName());
+        bc("a");
         if (cdm == null){
             return null;
         }
+        bc("b");
+
         return cdm.removeChunkData(x, z);
     }
     public FileManager removeChunkData(ChunkData cd){
