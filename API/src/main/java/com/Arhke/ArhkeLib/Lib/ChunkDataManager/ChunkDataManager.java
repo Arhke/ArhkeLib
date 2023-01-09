@@ -7,19 +7,12 @@ import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.World;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.function.Supplier;
 
-import static com.Arhke.ArhkeLib.Lib.Base.Base.bc;
 
 public class ChunkDataManager<T extends ChunkData>{
-    List<List<T>> xz = new ExpandableList<>();
-    List<List<T>> x_z = new ExpandableList<>();
-    List<List<T>> _xz = new ExpandableList<>();
-    List<List<T>> _x_z = new ExpandableList<>();
+    Map<Integer, Map<Integer, T>> dataMap = new HashMap<>();
     Queue<T> offLoadQueue = new LinkedList<>();
     final World world;
     final DirectoryManager dm;
@@ -37,20 +30,26 @@ public class ChunkDataManager<T extends ChunkData>{
      * @return <b>ChunkData</b> of the chunk for the given chunk
      */
     public T getChunkData(int x, int z, boolean createNew) {
-        if (x >= 0){
-            if (z >= 0){
-                return fetchChunkData(xz, x, z, createNew);
-
-            }else {
-                return fetchChunkData(x_z, x, z, createNew);
-            }
-        }else{
-            if(z >= 0){
-                return fetchChunkData(_xz, x, z, createNew);
-            }else {
-                return fetchChunkData(_x_z, x, z, createNew);
-            }
+        Map<Integer, T> dataList = dataMap.get(x);
+        if(dataList == null){
+            if(dm.getOrLoadFM(x + "." + z + ".yml") == null && !createNew) return null;
+            dataMap.put(x, dataList = new HashMap<>());
+            T data;
+            dataList.put(z, data = p.get());
+            data.setX(x); data.setZ(z); data.setWorld(this.world);
+            data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
+            offLoadQueue.add(data);
+            return data;
         }
+        T data = dataList.get(z);
+        if(data == null){
+            if(dm.getOrLoadFM(x + "." + z + ".yml") == null && !createNew) return null;
+            dataList.put(z, data = p.get());
+            data.setX(x); data.setZ(z); data.setWorld(this.world);
+            data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
+            offLoadQueue.add(data);
+        }
+        return data;
     }
     /**
      * @param c Bukkit Chunk Object specifying location of the data
@@ -66,107 +65,27 @@ public class ChunkDataManager<T extends ChunkData>{
     public T getChunkData(Location loc, boolean createNew) {
         return getChunkData(loc.getChunk(), createNew);
     }
-    private T fetchChunkData(List<List<T>> dataMap, int x, int z, boolean createNew){
-        int absX = Math.abs(x);
-        int absZ = Math.abs(z);
-        List<T> dataList;
-        try{
-            dataList = dataMap.get(absX);
-            if (dataList == null){
-                dataMap.set(absX, dataList = new ExpandableList<>());
-            }
-        }catch(IndexOutOfBoundsException e){
-            dataMap.set(absX, dataList = new ExpandableList<>());
-        }
-        T data;
-        try{
-            data = dataList.get(absZ);
-            if (data == null){
-                if(dm.getOrLoadFM(x + "." + z + ".yml") == null && !createNew) return null;
-
-                dataList.set(absZ, data = p.get());
-                bc("added " + x + " " + z);
-                data.setX(x); data.setZ(z); data.setWorld(this.world);
-                bc("added check, " + dataMap.get(absX).get(absZ).getX() + " " +  dataMap.get(absX).get(absZ).getZ());
-                data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
-                offLoadQueue.add(data);
-            }
-        }catch(IndexOutOfBoundsException e){
-            if(dm.getOrLoadFM(x + "." + z + ".yml") == null && !createNew) return null;
-            dataList.set(absZ, data = p.get());
-            bc("added " + x + " " + z);
-
-            data.setX(x); data.setZ(z); data.setWorld(this.world);
-            bc("added check, " + dataMap.get(absX).get(absZ).getX() + " " +  dataMap.get(absX).get(absZ).getZ());
-            data.load(dm.getOrNewFM(x + "." + z + ".yml").getDataManager());
-            offLoadQueue.add(data);
-        }
-        return data;
-    }
-    private FileManager unFetchChunkData(List<List<T>> dataMap, int x, int z){
-        int absX = Math.abs(x);
-        int absZ = Math.abs(z);
-        List<T> dataList;
-        bc("f");
-        try{
-            dataList = dataMap.get(absX);
-            bc("g");
-            if (dataList == null){
-                bc("h");
-                return null;
-            }
-        }catch(IndexOutOfBoundsException e){
-            bc("i");
-            return null;
-        }
-        T data;
-        try{
-            bc("j");
-            data = dataList.set(absZ, null);
-            if (data == null){
-                bc("k");
-                return null;
-            }
-        }catch(IndexOutOfBoundsException e){
-            bc("l");
-            return null;
-        }
-        bc("m");
-        return dm.getOrNewFM(x + "." + z + ".yml");
-    }
     public FileManager removeChunkData(int x, int z){
-        if (x >= 0){
-            if (z >= 0){
-                bc("c");
-
-                return unFetchChunkData(xz, x, z);
-
-            }else {
-                bc("d");
-
-                return unFetchChunkData(x_z, x, z);
-            }
-        }else{
-            if(z >= 0){
-                bc("e");
-
-                return unFetchChunkData(_xz, x, z);
-            }else {
-                bc("f");
-
-                return unFetchChunkData(_x_z, x, z);
-            }
+        Map<Integer, T> dataList = dataMap.get(x);
+        if(dataList == null){
+            return null;
         }
+        T data = dataList.remove(z);
+        if(dataList.isEmpty()) dataMap.remove(x);
+        if(data == null){
+            return null;
+        }
+        return dm.getOrNewFM(x + "." + z + ".yml");
     }
     public Queue<T> getOffLoadQueue(){
         return this.offLoadQueue;
     }
     public void save(){
-        for (List<T> cdList : xz) {
+        for (Map<Integer, T> cdList : dataMap.values()) {
             if (cdList == null) {
                 continue;
             }
-            for (T cd : cdList) {
+            for (T cd : cdList.values()) {
                 if (cd == null) {
                     continue;
                 }
@@ -178,57 +97,6 @@ public class ChunkDataManager<T extends ChunkData>{
                     fm.deleteFile();
                 }
 
-            }
-        }
-        for (List<T> cdList : xz) {
-            if (cdList == null) {
-                continue;
-            }
-            for (T cd : cdList) {
-                if (cd == null) {
-                    continue;
-                }
-                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
-                cd.write(fm.getDataManager());
-                if (fm.getDataManager().getConfig().getKeys(true).size() != 0 ){
-                    fm.save();
-                }else{
-                    fm.deleteFile();
-                }
-            }
-        }
-        for (List<T> cdList : x_z) {
-            if (cdList == null) {
-                continue;
-            }
-            for (T cd : cdList) {
-                if (cd == null) {
-                    continue;
-                }
-                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
-                cd.write(fm.getDataManager());
-                if (fm.getDataManager().getConfig().getKeys(true).size() != 0 ){
-                    fm.save();
-                }else{
-                    fm.deleteFile();
-                }
-            }
-        }
-        for (List<T> cdList : _x_z) {
-            if (cdList == null) {
-                continue;
-            }
-            for (T cd : cdList) {
-                if (cd == null) {
-                    continue;
-                }
-                FileManager fm = dm.getOrNewFM(cd.getX() + "." + cd.getZ() + ".yml");
-                cd.write(fm.getDataManager());
-                if (fm.getDataManager().getConfig().getKeys(true).size() != 0 ){
-                    fm.save();
-                }else{
-                    fm.deleteFile();
-                }
             }
         }
     }
