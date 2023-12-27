@@ -57,7 +57,7 @@ public class Randomizer<T> {
                 return null;
             }
         }
-        int randomNumber = rand.nextInt(total);
+        int randomNumber = (int)(Math.random()*total+1);
         for(T object : content.keySet()) {
             randomNumber -= content.get(object);
             if(randomNumber <= 0) {

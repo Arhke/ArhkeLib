@@ -27,6 +27,9 @@ public class FileManager extends Base {
         this.file = file;
     }
 
+    public File getFile(){
+        return file;
+    }
     /**
      * @return whether or not the file previously stored by file manager still exists
      */

@@ -8,6 +8,7 @@ import com.Arhke.ArhkeLib.Lib.FileIO.ConfigManager;
 import com.Arhke.ArhkeLib.Lib.GUI.GUIManager;
 import com.Arhke.ArhkeLib.Lib.Hook.Hook;
 import com.Arhke.ArhkeLib.Lib.Hook.Plugins;
+import com.Arhke.ArhkeLib.Lib.Utils.CustomAttributeListener;
 import com.Arhke.ArhkeLib.Lib.Utils.RecipeBuilder;
 import com.earth2me.essentials.libs.checkerframework.checker.nullness.qual.Nullable;
 import org.bukkit.Bukkit;
@@ -49,6 +50,9 @@ public abstract class PluginBase extends JavaPlugin {
     public void registerGUI() {
         this.guiManager = new GUIManager(this);
         Bukkit.getPluginManager().registerEvents(this.guiManager, this);
+    }
+    public void registerCustomAttributeEvents(){
+        Bukkit.getPluginManager().registerEvents(new CustomAttributeListener(), this);
     }
     public void registerHooks(Plugins... support) {
         this.hook = new Hook(this, support);

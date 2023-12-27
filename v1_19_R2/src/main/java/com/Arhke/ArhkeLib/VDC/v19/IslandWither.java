@@ -101,7 +101,7 @@
 ////
 ////            this.setInvulnerableTicks(i);
 ////            if (this.tickCount % 10 == 0) {
-////                this.heal(10.0F, EntityRegainHealthEvent.RegainReason.WITHER_SPAWN);
+////                this.heal(10.0F, 60.RegainReason.WITHER_SPAWN);
 ////            }
 ////        } else {
 ////            super.customServerAiStep();

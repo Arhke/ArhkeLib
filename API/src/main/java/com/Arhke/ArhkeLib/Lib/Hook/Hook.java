@@ -209,6 +209,9 @@ public class Hook extends MainBase<JavaPlugin> {
 		if(rm == null)return null;
 		return rm.getRegion(name);
 	}
+	public boolean canHurt(Player p, Location location) {
+		return canWG(p, location, Flags.PVP);
+	}
 	public boolean canBuild(Player p, Location location) {
 		return canWG(p, location, Flags.BUILD);
 	}

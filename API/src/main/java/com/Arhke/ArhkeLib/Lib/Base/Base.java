@@ -27,8 +27,8 @@ public abstract class Base {
             ret = ret.replace("{"+i+"}", objList[i].toString());
         }
         ret = ret.replace('&', ChatColor.COLOR_CHAR)
+                .replace("\\s", " ")
                 .replace("\\n", "\n")
-                .replace('_',' ')
                 .replace(ChatColor.COLOR_CHAR+""+ChatColor.COLOR_CHAR,"&");
 
 
@@ -40,8 +40,8 @@ public abstract class Base {
             ret = ret.replace("{"+i+"}", objList[i].toString());
         }
         ret = ret.replace('&', ChatColor.COLOR_CHAR)
+                .replace("\\s", " ")
                 .replace("\\n", "\n")
-                .replace('_',' ')
                 .replace(ChatColor.COLOR_CHAR+""+ChatColor.COLOR_CHAR,"&");
         if(isPlaceholderAPI) return ret;
         return PlaceholderAPI.setPlaceholders(p, ret);
