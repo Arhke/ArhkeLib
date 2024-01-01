@@ -33,8 +33,8 @@ public abstract class PluginBase extends JavaPlugin {
     public ConfigManager getConfig(ConfigFile cf){
         return this.configLoader.getConfigManager(cf);
     }
-    public void registerCommands(CommandsBase<?>... commands) {
-        for (CommandsBase<?> command: commands) {
+    public void registerCommands(CommandsBase... commands) {
+        for (CommandsBase command: commands) {
             PluginCommand pc = getCommand(command.getCmd());
             command.getDM().getFM().save();
             if(pc == null){

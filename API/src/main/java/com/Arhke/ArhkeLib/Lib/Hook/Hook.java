@@ -7,7 +7,7 @@ import com.Arhke.ArhkeLib.Lib.Base.MainBase;
 import com.earth2me.essentials.Essentials;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
-import com.sk89q.worldguard.WorldGuard;
+//import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
@@ -34,7 +34,7 @@ public class Hook extends MainBase<JavaPlugin> {
 	private Essentials essentials;
 	private Economy econ;
 	private Permission perm;
-	private WorldGuard worldGuard;
+//	private WorldGuard worldGuard;
 	private WorldGuardPlugin wgPlugin;
 	private CannonsAPI cannonsAPI;
 	private Cannons cannons;
@@ -100,7 +100,7 @@ public class Hook extends MainBase<JavaPlugin> {
 			return false;
 		}
 		this.wgPlugin = (WorldGuardPlugin) plugin;
-		this.worldGuard =  WorldGuard.getInstance();
+//		this.worldGuard =  WorldGuard.getInstance();
 		return true;
 	}
 	boolean setUpWorldEdit() {
@@ -194,37 +194,37 @@ public class Hook extends MainBase<JavaPlugin> {
 		}.register();
 	}
 	//===============<WorldGuard Stuff>==========
-	public  boolean hasWG() {
-		return worldGuard!=null;
-	}
-	public boolean isInRegion(Location location, String name){
-		RegionManager rm = this.worldGuard.getPlatform().getRegionContainer().get(BukkitAdapter.adapt(Objects.requireNonNull(location.getWorld())));
-		if(rm == null)return false;
-		ProtectedRegion region = rm.getRegion(name);
-		if(region == null) return false;
-		return region.contains(location.getBlockX(), location.getBlockY(), location.getBlockZ());
-	}
-	public ProtectedRegion getRegion(World world, String name){
-		RegionManager rm = this.worldGuard.getPlatform().getRegionContainer().get(BukkitAdapter.adapt(world));
-		if(rm == null)return null;
-		return rm.getRegion(name);
-	}
-	public boolean canHurt(Player p, Location location) {
-		return canWG(p, location, Flags.PVP);
-	}
-	public boolean canBuild(Player p, Location location) {
-		return canWG(p, location, Flags.BUILD);
-	}
-	public boolean canBuild(Player p, Block b) {
-		return canBuild(p, b.getLocation());
-	}
-	public boolean canWG(Player p, Location location, StateFlag... flags){
-		if(worldGuard.getPlatform().getSessionManager().hasBypass(wgPlugin.wrapPlayer(p), BukkitAdapter.adapt(Objects.requireNonNull(location.getWorld())))){
-			return true;
-		}
-		return worldGuard.getPlatform().getRegionContainer().createQuery().testState(BukkitAdapter.adapt(location), wgPlugin.wrapPlayer(p), flags);
-
-	}
+//	public  boolean hasWG() {
+//		return worldGuard!=null;
+//	}
+//	public boolean isInRegion(Location location, String name){
+//		RegionManager rm = this.worldGuard.getPlatform().getRegionContainer().get(BukkitAdapter.adapt(Objects.requireNonNull(location.getWorld())));
+//		if(rm == null)return false;
+//		ProtectedRegion region = rm.getRegion(name);
+//		if(region == null) return false;
+//		return region.contains(location.getBlockX(), location.getBlockY(), location.getBlockZ());
+//	}
+//	public ProtectedRegion getRegion(World world, String name){
+//		RegionManager rm = this.worldGuard.getPlatform().getRegionContainer().get(BukkitAdapter.adapt(world));
+//		if(rm == null)return null;
+//		return rm.getRegion(name);
+//	}
+//	public boolean canPVP(Player p, Location location) {
+//		return canWG(p, location, Flags.PVP);
+//	}
+//	public boolean canBuild(Player p, Location location) {
+//		return canWG(p, location, Flags.BUILD);
+//	}
+//	public boolean canBuild(Player p, Block b) {
+//		return canBuild(p, b.getLocation());
+//	}
+//	public boolean canWG(Player p, Location location, StateFlag... flags){
+//		if(worldGuard.getPlatform().getSessionManager().hasBypass(wgPlugin.wrapPlayer(p), BukkitAdapter.adapt(Objects.requireNonNull(location.getWorld())))){
+//			return true;
+//		}
+//		return worldGuard.getPlatform().getRegionContainer().createQuery().testState(BukkitAdapter.adapt(location), wgPlugin.wrapPlayer(p), flags);
+//
+//	}
 	//==============<WorldEdit Stuff>=============
 	public void setBlock(Location loc1, Location loc2, Material mat){
 //		if (loc1.getWorld() == null || !Objects.equals(loc1.getWorld(), loc2.getWorld())) return;
@@ -277,9 +277,9 @@ public class Hook extends MainBase<JavaPlugin> {
 					, c.getBlock(15, c.getWorld().getSeaLevel(), 15)
 					, c.getBlock(0, c.getWorld().getSeaLevel(), 15)};
 			for(Block b : blocks){
-				if(!canBuild(p, b)){
-					return true;
-				}
+//				if(!canBuild(p, b)){
+//					return true;
+//				}
 			}
 		}catch(Exception e){
 			err(e.toString());

@@ -7,7 +7,7 @@ public enum Direction3D {
     POSITIVEY(0,1,0), NEGATIVEY(0,-1,0),
     POSITIVEZ(0,0,1), NEGATIVEZ(0,0,-1);
 
-    final int x,y,z;
+    public final int x,y,z;
     Direction3D(int x,int y, int z){
         this.x = x; this.y = y; this.z = z;
     }

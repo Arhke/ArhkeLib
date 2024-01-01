@@ -1,10 +1,11 @@
 package com.Arhke.ArhkeLib.Lib.Utils;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class PluginYamlBuilder {
     public static void build(Class<?> clazz){
-
+        System.out.println("hi");
         StringBuilder sb = new StringBuilder();
         Scanner scan = new Scanner(System.in);
         System.out.print("Plugin Name: ");

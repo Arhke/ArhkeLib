@@ -1,10 +1,8 @@
-package com.Arhke.ArhkeLib.Lib.Base;
+package com.Arhke.ArhkeLib.VDS.v8;
 
-import at.pavlov.cannons.listener.Commands;
-import com.Arhke.ArhkeLib.Lib.FileIO.ConfigManager;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.*;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;

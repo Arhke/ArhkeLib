@@ -2,7 +2,7 @@ package com.Arhke.ArhkeLib.Lib.Utils.Directions;
 
 import org.bukkit.block.BlockFace;
 
-public enum Direction {
+public enum CardinalDirection {
     N(BlockFace.NORTH, "North", 'N', 0, -1),
     E(BlockFace.EAST, "East", 'E', 1, 0),
     S(BlockFace.SOUTH, "South", 'S', 0, 1),
@@ -13,13 +13,13 @@ public enum Direction {
     int x, z;
     char code;
     BlockFace bf;
-    Direction(BlockFace bf, String name, char code, int x, int z){
+    CardinalDirection(BlockFace bf, String name, char code, int x, int z){
         this.code = code;
         this.name = name;
         this.x = x; this.z = z;
         this.bf = bf;
     }
-    public static Direction directionOf(float yaw) {
+    public static CardinalDirection directionOf(float yaw) {
         while(yaw < 0){
             yaw += 360;
         }
@@ -27,15 +27,15 @@ public enum Direction {
             yaw -= 360;
         }
         if(315 < yaw || yaw <= 45){
-            return Direction.S;
+            return CardinalDirection.S;
         }else if(45 < yaw && yaw <= 135){
-            return Direction.W;
+            return CardinalDirection.W;
         }else if(135 < yaw && yaw <= 225){
-            return Direction.N;
+            return CardinalDirection.N;
         }else if(225 < yaw){
-            return Direction.E;
+            return CardinalDirection.E;
         }else{
-            return Direction.NONE;
+            return CardinalDirection.NONE;
         }
     }
     public String getName(){

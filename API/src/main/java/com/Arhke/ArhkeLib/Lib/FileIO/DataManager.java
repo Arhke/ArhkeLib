@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 public class DataManager extends Base {
     ConfigurationSection config;
 
-    public DataManager(ConfigurationSection cs){
+    protected DataManager(ConfigurationSection cs){
         config = cs;
     }
 

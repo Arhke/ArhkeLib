@@ -1,4 +1,4 @@
-package com.Arhke.ArhkeLib.VDS.com.Arhke.ArhkeLib.VDS.v8;
+package com.Arhke.ArhkeLib.VDS;
 
 import com.sk89q.worldedit.world.entity.EntityTypes;
 

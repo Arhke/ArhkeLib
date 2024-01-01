@@ -4,7 +4,7 @@ import com.Arhke.ArhkeLib.Lib.FileIO.DataManager;
 import com.Arhke.ArhkeLib.Lib.FileIO.YamlSerializable;
 
 public class Vector3D implements YamlSerializable {
-    double x, y, z;
+    public double x, y, z;
     public Vector3D(double x, double y, double z){
         this.x = x;
         this.y = y;
