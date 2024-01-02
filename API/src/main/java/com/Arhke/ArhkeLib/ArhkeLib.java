@@ -11,11 +11,8 @@ public class ArhkeLib extends JavaPlugin {
     ConsoleCommandSender consoleSender = Bukkit.getConsoleSender();
 
 
-
-    private static ArhkeLib plugin ;
     @Override
     public void onEnable() {
-        plugin = this;
         consoleSender.sendMessage("[ArhkeLib] " + ChatColor.GREEN + "Arhke-Lib started loading...");
 
         //register the event listeners
@@ -27,10 +24,6 @@ public class ArhkeLib extends JavaPlugin {
 
 
 //        getWorldDataManager().saveAllChunkData();
-    }
-
-    public static ArhkeLib getPlugin() {
-        return plugin;
     }
 
     private void initializeListeners() {

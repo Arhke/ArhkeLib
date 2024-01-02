@@ -37,7 +37,6 @@ public abstract class SubCommandsBase{
 	public void setPermission(String permission){
 		this.permission = permission;
 	}
-
 	public CommandType getType(){
 		return ct;
 	}

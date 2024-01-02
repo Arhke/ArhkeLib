@@ -1,6 +1,6 @@
-package com.Arhke.ArhkeLib.Lib.Utils;
+package com.Arhke.ArhkeLib.Lib.ItemUtil;
 
-import com.Arhke.ArhkeLib.Lib.Utils.ArmorTags.Slot;
+import com.Arhke.ArhkeLib.Lib.ItemUtil.CustomItem.ArmorTags.Slot;
 import org.bukkit.Material;
 
 public enum EquipmentType {

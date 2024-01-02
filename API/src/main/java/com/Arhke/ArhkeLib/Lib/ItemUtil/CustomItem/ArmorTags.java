@@ -1,12 +1,10 @@
-package com.Arhke.ArhkeLib.Lib.Utils;
+package com.Arhke.ArhkeLib.Lib.ItemUtil.CustomItem;
 
 import com.Arhke.ArhkeLib.Lib.Base.Base;
-import com.sk89q.worldedit.function.operation.Operations;
 import de.tr7zw.nbtapi.*;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.checkerframework.checker.units.qual.C;
 
 public class ArmorTags extends Base {
     NBTItem _nbti;

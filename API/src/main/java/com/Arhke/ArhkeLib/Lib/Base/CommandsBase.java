@@ -27,9 +27,8 @@ public abstract class CommandsBase implements CommandExecutor, TabCompleter {
     protected ConfigManager dm;
     public static final String HelpListKey = "helpList", HelpHeaderKey = "helpHeader", PermissionKey = "permissionNode";
     /**
-     * Input the General Config DataManager for TownCommands
      */
-    public CommandsBase(JavaPlugin plugin, String command, ConfigManager dm, SubCommandsBase... subCommands) {
+    public CommandsBase(JavaPlugin plugin, String command, ConfigManager dm) {
         this.commandName = command.toLowerCase();
         this.dm = dm;
         dm.isOrDefault(Collections.emptyList(), HelpListKey);
@@ -40,11 +39,13 @@ public abstract class CommandsBase implements CommandExecutor, TabCompleter {
         }
         this.helpMessage = new HelpMessage(dm.getString(HelpHeaderKey));
         this.permission = dm.getDefString("", PermissionKey);
-        this.subCommands.addAll(Arrays.asList(subCommands));
+
         setDefaults();
-        for(SubCommandsBase subcommand: this.subCommands){
-            setHelpBuilder(subcommand.getHelpPerm());
-        }
+
+    }
+    public void registerSubCommand(SubCommandsBase scb){
+        this.subCommands.add(scb);
+        setHelpBuilder(scb.getHelpPerm());
     }
     @Override
     @SuppressWarnings("NullableProblems")

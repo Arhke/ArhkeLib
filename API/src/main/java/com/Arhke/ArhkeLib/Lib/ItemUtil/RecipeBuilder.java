@@ -1,4 +1,4 @@
-package com.Arhke.ArhkeLib.Lib.Utils;
+package com.Arhke.ArhkeLib.Lib.ItemUtil;
 
 import com.Arhke.ArhkeLib.ArhkeLib;
 import com.Arhke.ArhkeLib.Lib.Base.MainBase;

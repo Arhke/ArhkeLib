@@ -1,4 +1,4 @@
-package com.Arhke.ArhkeLib.Lib.Utils;
+package com.Arhke.ArhkeLib.Lib.Utils.DataStructures;
 
 import java.util.ArrayList;
 

@@ -5,51 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86e31156-4df3-4cdd-a795-8a6389f337d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/v1_8_8/src/main/java/com/Arhke/ArhkeLib/VDS/v8/Hook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/v1_8_8/src/main/java/com/Arhke/ArhkeLib/VDS/v8/Plugins.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/API/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/Base.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/PluginBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/PluginBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/SubCommandsBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/ChunkDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ChunkDataManager/WorldDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/ConfigManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/DataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/Loadable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/FileIO/Savable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Hook/Hook.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Hook/Hook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/PacketNMS/PacketSend.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/PacketNMS/SendBookPacket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Directions/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Directions/CardinalDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Directions/Direction3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Directions/Direction3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/PluginYamlBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/PluginYamlBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/API-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/API-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/Base.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Base/Base.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/DataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/FileIO/DataManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/Hook.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Hook/Hook.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/Directions/Direction3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/Directions/Direction3D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector3D.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/Math/Vector3D.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/PluginYamlBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/API/target/classes/com/Arhke/ArhkeLib/Lib/Utils/PluginYamlBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/API-2.0-SNAPSHOT-shaded.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/AccessoryListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ItemUtil/CustomItem/AccessoryListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/ArmorTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ItemUtil/CustomItem/ArmorTags.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/Attributes.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ItemUtil/CustomItem/Attributes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/CustomAttributeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ItemUtil/CustomItem/CustomAttributeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/EquipmentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ItemUtil/EquipmentType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/ExpandableList.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/DataStructures/ExpandableList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/RecipeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/ItemUtil/RecipeBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_12_R2/target/v1_12_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_12_R2/target/v1_12_R2-2.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_19_R2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_8_8/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/v1_8_8/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_8_8/src/main/java/com/Arhke/ArhkeLib/VDS/com/Arhke/ArhkeLib/VDS/v8/CustomEntityRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/v1_8_8/src/main/java/com/Arhke/ArhkeLib/VDS/CustomEntityRegistry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_8_8/target/v1_8_8-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_8_8/target/v1_8_8-2.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +82,9 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\willi\Desktop\ArhkeLib\API\src\main\java\com\Arhke\ArhkeLib\Lib\Utils\ItemUtil\CustomAttributes" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.Arhke.ArhkeLib.Lib.Utils" />
     </key>

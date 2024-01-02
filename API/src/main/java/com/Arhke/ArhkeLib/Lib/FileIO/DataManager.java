@@ -20,6 +20,19 @@ public class DataManager extends Base {
     public ConfigurationSection getConfig(){
         return config;
     }
+    public static String pathOf(String... Path) {
+        if (Path.length == 0)
+            return "";
+        else if (Path.length == 1)
+            return Path[0];
+        else {
+            String ret = Path[0];
+            for (int i = 1; i < Path.length; i++) {
+                ret += "." + Path[i];
+            }
+            return ret;
+        }
+    }
     public void isOrDefault(int def, String... path){
         String pathString = pathOf(path);
         if (config.isDouble(pathString)){

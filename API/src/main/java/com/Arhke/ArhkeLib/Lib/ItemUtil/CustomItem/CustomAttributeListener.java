@@ -1,5 +1,6 @@
-package com.Arhke.ArhkeLib.Lib.Utils;
+package com.Arhke.ArhkeLib.Lib.ItemUtil.CustomItem;
 import com.Arhke.ArhkeLib.Lib.Base.Base;
+import com.Arhke.ArhkeLib.Lib.ItemUtil.EquipmentType;
 import com.Arhke.ArhkeLib.VDC.v19.CustomProtectionCalculation;
 import de.tr7zw.nbtapi.NBTItem;
 import org.bukkit.Bukkit;

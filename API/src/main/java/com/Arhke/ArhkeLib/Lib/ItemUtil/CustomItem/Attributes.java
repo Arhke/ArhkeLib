@@ -1,4 +1,4 @@
-package com.Arhke.ArhkeLib.Lib.Utils;
+package com.Arhke.ArhkeLib.Lib.ItemUtil.CustomItem;
 
 
 public interface Attributes {

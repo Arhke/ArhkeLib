@@ -14,13 +14,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class WorldDataManager<T extends ChunkData> extends MainBase<JavaPlugin> {
+public class WorldDataManager<T extends ChunkData> {
 
     DirectoryManager dm;
     Map<String, ChunkDataManager<T>> worldData = new HashMap<>();
     Supplier<T> supplier;
-    public WorldDataManager(JavaPlugin instance, DirectoryManager dm, Supplier<T> supplier) {
-        super(instance);
+    public WorldDataManager(DirectoryManager dm, Supplier<T> supplier) {
         this.dm = dm;
         this.supplier = supplier;
     }

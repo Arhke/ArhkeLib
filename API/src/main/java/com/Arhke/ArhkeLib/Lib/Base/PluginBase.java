@@ -8,8 +8,8 @@ import com.Arhke.ArhkeLib.Lib.FileIO.ConfigManager;
 import com.Arhke.ArhkeLib.Lib.GUI.GUIManager;
 import com.Arhke.ArhkeLib.Lib.Hook.Hook;
 import com.Arhke.ArhkeLib.Lib.Hook.Plugins;
-import com.Arhke.ArhkeLib.Lib.Utils.CustomAttributeListener;
-import com.Arhke.ArhkeLib.Lib.Utils.RecipeBuilder;
+import com.Arhke.ArhkeLib.Lib.ItemUtil.CustomItem.CustomAttributeListener;
+import com.Arhke.ArhkeLib.Lib.ItemUtil.RecipeBuilder;
 import com.earth2me.essentials.libs.checkerframework.checker.nullness.qual.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
@@ -23,6 +23,8 @@ public abstract class PluginBase extends JavaPlugin {
     protected Hook hook;
     protected GUIManager guiManager;
     protected RecipeBuilder recipeBuilder;
+
+
     public Hook getHook() {return hook;}
     public GUIManager getGUIManager(){
         return guiManager;

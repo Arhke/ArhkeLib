@@ -1,6 +1,6 @@
 package com.Arhke.ArhkeLib.Lib.FileIO;
 
-public class ConfigManager extends DataManager{
+public class  ConfigManager extends DataManager{
     FileManager fm;
     public ConfigManager(FileManager fm) {
         super(fm.getConfig());
@@ -12,7 +12,6 @@ public class ConfigManager extends DataManager{
     public void reloadConfig() throws Exception {
         this.fm.reloadConfig();
         config = fm.getConfig();
-
     }
 
 

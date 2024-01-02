@@ -5,6 +5,7 @@ import com.Arhke.ArhkeLib.Lib.FileIO.YamlSerializable;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 
@@ -99,7 +100,7 @@ public abstract class ChunkData implements YamlSerializable {
         return Math.pow((land.getX()-x), 2) + Math.pow((land.getZ()-z), 2);
     }
 
-    public void show(Player p) {
+    public void show(JavaPlugin jp,Player p) {
 
         List<PlayerContainer> remove = new ArrayList<PlayerContainer>();
         for(PlayerContainer uuid : timePlayer.keySet()) {
@@ -160,7 +161,7 @@ public abstract class ChunkData implements YamlSerializable {
                 }
             }
         }
-        Bukkit.getScheduler().scheduleSyncDelayedTask(ArhkeLib.getPlugin(), new Runnable(){
+        Bukkit.getScheduler().scheduleSyncDelayedTask(jp, new Runnable(){
             @Override
             public void run() {
                 for(Block b : blocks){
