@@ -1,18 +1,28 @@
 package com.Arhke.ArhkeLib.Lib.Base;
 
 import at.pavlov.cannons.listener.Commands;
+import com.Arhke.ArhkeLib.Lib.CustomEvents.TrueDamageEvent;
 import com.Arhke.ArhkeLib.Lib.FileIO.ConfigManager;
+import com.sk89q.worldguard.bukkit.WGBukkit;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Field;
 import java.text.Format;
@@ -163,6 +173,32 @@ public abstract class Base {
         return is2.toString().equals(is.toString());
     }
 
+    public static void trueDamage(LivingEntity attacker, LivingEntity target, double damage){
+        if(damage <= 0) return;
+        if(target.isDead()) return;
+        damage = Math.min(target.getHealth(), damage);
+        TrueDamageEvent event;
+        Bukkit.getPluginManager().callEvent(event = new TrueDamageEvent(attacker, target, damage));
+        if(event.isCancelled()) return;
+        target.setHealth(Math.max(0,target.getHealth()-event.getDamage()));
+        target.setLastDamageCause(new EntityDamageEvent(attacker, EntityDamageEvent.DamageCause.ENTITY_ATTACK, damage));
+
+    }
+    public static boolean isTargeteableLivingEntity(Entity entity) {
+        return entity instanceof Player && !entity.hasMetadata("NPC") && !isInProtectedRegion((Player)entity) && !entity.isDead();
+    }
+
+    public static boolean isTargeteableEntity(Entity entity) {
+        return isTargeteableLivingEntity(entity) || entity instanceof Item;
+    }
+
+    public static boolean isInProtectedRegion(Player player) {
+        return !WGBukkit.getRegionManager(player.getWorld()).getApplicableRegions(player.getLocation()).allows(DefaultFlag.PVP);
+    }
+
+    public static boolean isInProtectedRegion(Location loc) {
+        return !WGBukkit.getRegionManager(loc.getWorld()).getApplicableRegions(loc).allows(DefaultFlag.PVP);
+    }
     public static void setDisplayName(ItemStack is, String name) {
         ItemMeta im = is.getItemMeta();
         Objects.requireNonNull(im).setDisplayName(tcm(name));
@@ -218,6 +254,10 @@ public abstract class Base {
         Bukkit.getLogger().severe(msg);
     }
     public static void except(String Msg) throws RuntimeException {
+        throw new RuntimeException(Msg);
+    }
+    public void exceptDisable(JavaPlugin plugin, String Msg){
+        Bukkit.getPluginManager().disablePlugin(plugin);
         throw new RuntimeException(Msg);
     }
     public static void sendActionBar(Player player, String msg){
