@@ -1,5 +1,0 @@
-package com.Arhke.ArhkeLib.VDS.v8;
-
-public enum Plugins {
-    VAULT, PLACEHOLDERAPI, WORLDGUARD, ESSSENTIALS, WORLDEDIT, NBTAPI, CANNONS
-}
