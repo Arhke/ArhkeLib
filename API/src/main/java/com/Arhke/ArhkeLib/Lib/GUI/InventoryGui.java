@@ -24,7 +24,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author William Lin
  *
  */
-public abstract class InventoryGui<T extends JavaPlugin> extends MainBase<T> {
+public abstract class InventoryGui {
 
 	private final Inventory inventory;
 	boolean canModify = false, closeAfterPress = false;
@@ -37,8 +37,7 @@ public abstract class InventoryGui<T extends JavaPlugin> extends MainBase<T> {
 	 * @param rows put in the number of rows of the inventory
 	 * sets the main instance of this plugin and stores a copy of the inventory parameter.
 	 */
-	public InventoryGui(T instance, int rows, String title){
-	    super(instance);
+	public InventoryGui(int rows, String title){
 	    this.inventory = Bukkit.createInventory(null, Math.min(Math.max(1, rows), 6)*9, title);
 	}
 	public abstract void setItems(Player p);
@@ -61,7 +60,6 @@ public abstract class InventoryGui<T extends JavaPlugin> extends MainBase<T> {
 			}
 		}
 	}
-	public void openOtherGUI(InventoryGui<T> gui){}
     /**
      * Gets the bukkit inventory.
      * @return

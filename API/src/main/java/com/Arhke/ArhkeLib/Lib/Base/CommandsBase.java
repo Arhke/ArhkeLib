@@ -9,43 +9,43 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 @SuppressWarnings("unused")
 public abstract class CommandsBase implements CommandExecutor, TabCompleter {
     protected final String commandName;
-    protected String permission = "";
-    protected String[] helpString = new String[0];
-    protected final HelpMessage helpMessage;
+    protected String permission;
+    protected String[] helpList = new String[0];
+    protected final HelpMessage multiPageHelp;
     protected final List<SubCommandsBase> subCommands = new ArrayList<>();
     protected ConfigManager dm;
-    public static final String HelpListKey = "helpList", HelpHeaderKey = "helpHeader", PermissionKey = "permissionNode";
+    public static final String HelpListKey = "singleLineHelp", HelpHeaderKey = "multiPageHelpHeader", PermissionKey = "permissionNode";
     /**
      */
-    public CommandsBase(JavaPlugin plugin, String command, ConfigManager dm) {
+    public CommandsBase(String command, ConfigManager dm) {
         this.commandName = command.toLowerCase();
         this.dm = dm;
+        setDefaults();
         dm.isOrDefault(Collections.emptyList(), HelpListKey);
+        dm.isOrDefault("", PermissionKey);
         dm.isOrDefault("&6====<Page &7{0} &6out of &7{1}&6>====", HelpHeaderKey);
         List<String> helpList = dm.getStringList(HelpListKey);
         if(helpList.size() != 0){
-            helpString = Base.tcm(helpList.toArray(new String[0]));
+            this.helpList = Base.tcm(helpList.toArray(new String[0]));
         }
-        this.helpMessage = new HelpMessage(dm.getString(HelpHeaderKey));
-        this.permission = dm.getDefString("", PermissionKey);
-
-        setDefaults();
+        this.multiPageHelp = new HelpMessage(dm.getString(HelpHeaderKey));
+        this.permission = dm.getString(PermissionKey);
+        dm.getFM().save();
 
     }
     public void registerSubCommand(SubCommandsBase scb){
         this.subCommands.add(scb);
         setHelpBuilder(scb.getHelpPerm());
+        dm.getFM().save();
     }
     @Override
     @SuppressWarnings("NullableProblems")
@@ -66,7 +66,7 @@ public abstract class CommandsBase implements CommandExecutor, TabCompleter {
             ret.removeIf((tab)->!tab.startsWith(args[0]));
         }else{
             if(args[0].equalsIgnoreCase("help") && args.length == 2){
-                int max = helpMessage.getHelpPermList().size() / helpMessage.getLinePerPage();
+                int max = multiPageHelp.getHelpPermList().size() / multiPageHelp.getLinePerPage();
                 for(int i = 0; i <= max; i++){
                     ret.add(i+1+"");
                 }
@@ -106,23 +106,23 @@ public abstract class CommandsBase implements CommandExecutor, TabCompleter {
         return dm;
     }
     public String[] getHelpString() {
-        return helpString;
+        return helpList;
     }
     public void sendHelp(@Nonnull CommandSender sender, int page){
 
         if(page == 0){
-            if(this.helpString.length == 0){
+            if(this.helpList.length == 0){
                 page = 1;
             }else {
-                sender.sendMessage(this.helpString);
+                sender.sendMessage(this.helpList);
                 return;
             }
         }
-        sender.sendMessage(this.helpMessage.getMessage(sender, page));
+        sender.sendMessage(this.multiPageHelp.getMessage(sender, page));
     }
     public abstract void setDefaults();
     private void setHelpBuilder(HelpPerm hp){
-        helpMessage.addMessage(Base.tcm(hp.getMsg(), this.getCmd()));
+        multiPageHelp.addMessage(Base.tcm(hp.getMsg(), this.getCmd()));
     }
     protected boolean processSubCommands(CommandSender sender, String[] args) {
         if(permission.length() != 0 && !sender.hasPermission(permission)) return false;

@@ -10,6 +10,8 @@ import com.Arhke.ArhkeLib.Lib.Hook.Hook;
 import com.Arhke.ArhkeLib.Lib.Hook.Plugins;
 import com.Arhke.ArhkeLib.Lib.ItemUtil.CustomItem.CustomAttributeListener;
 import com.Arhke.ArhkeLib.Lib.ItemUtil.RecipeBuilder;
+import com.Arhke.ArhkeLib.Lib.Utils.version.Version;
+import com.Arhke.ArhkeLib.Lib.Utils.version.VersionUtil;
 import com.earth2me.essentials.libs.checkerframework.checker.nullness.qual.Nullable;
 import org.bukkit.Bukkit;
 import org.bukkit.command.PluginCommand;
@@ -23,7 +25,7 @@ public abstract class PluginBase extends JavaPlugin {
     protected Hook hook;
     protected GUIManager guiManager;
     protected RecipeBuilder recipeBuilder;
-
+    {VersionUtil.setup(this);}
 
     public Hook getHook() {return hook;}
     public GUIManager getGUIManager(){
@@ -74,6 +76,9 @@ public abstract class PluginBase extends JavaPlugin {
     }
     public RecipeBuilder getRecipeBuilder(){
         return recipeBuilder;
+    }
+    public Version getServerVersion(){
+        return VersionUtil.SERVER_VERSION;
     }
     public final void registerCustomEvents(int version){
         if(version < 12){

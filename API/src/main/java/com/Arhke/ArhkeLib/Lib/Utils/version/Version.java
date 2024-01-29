@@ -1,12 +1,12 @@
-package me.gorgeousone.paintball.util.version;
+package com.Arhke.ArhkeLib.Lib.Utils.version;
 
 import java.util.Objects;
-
+//This class is copied from me.gorgeousone.paintball.util on github
 public class Version {
 	
-	int major;
-	int minor;
-	int patch;
+	private final int major;
+	private final int minor;
+	private final int patch;
 	
 	public Version(String versionString) {
 		this(versionString, "\\.");
@@ -55,5 +55,17 @@ public class Version {
 	@Override
 	public String toString() {
 		return major + "." + minor + "." + patch;
+	}
+
+	public int getMajor() {
+		return major;
+	}
+
+	public int getMinor() {
+		return minor;
+	}
+
+	public int getPatch() {
+		return patch;
 	}
 }

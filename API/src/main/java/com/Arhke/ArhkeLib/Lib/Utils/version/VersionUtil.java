@@ -1,8 +1,9 @@
-package me.gorgeousone.paintball.util.version;
+package com.Arhke.ArhkeLib.Lib.Utils.version;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+//This class is copied from me.gorgeousone.paintball.util on github
 public final class VersionUtil {
 	
 	public static Version PLUGIN_VERSION;

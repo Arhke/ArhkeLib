@@ -5,21 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86e31156-4df3-4cdd-a795-8a6389f337d2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/CustomEvents/TrueDamageEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/API/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/CommandsBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/PluginBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Base/PluginBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/GUI/GUIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/GUI/GUIManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/GUI/InventoryGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/GUI/InventoryGui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/version/Version.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/version/Version.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/version/VersionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils/version/VersionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/VDS/VDSPotionEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/VDS/VDSPotionEffect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ArhkeLib-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_18_R2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/original-v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_18_R2/target/v1_18_R2-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_19_R2/src/main/java/com/Arhke/ArhkeLib/VDC/v19/CustomProtectionCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/src/main/java/com/Arhke/ArhkeLib/VDC/v19/CustomProtectionCalculation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/original-v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped-obf.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT-remapped.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_19_R2/target/v1_19_R2-2.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v1_8_8/target/v1_8_8-2.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/v1_8_8/target/v1_8_8-2.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v1_8_8/src/main/java/com/Arhke/ArhkeLib/VDS/CustomProtectionCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/v1_8_8/src/main/java/com/Arhke/ArhkeLib/VDS/CustomProtectionCalculation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +73,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../shellext.dll/SignShop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/API/src/main/java/com/Arhke/ArhkeLib/Lib/Utils" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36091954" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\willi\Desktop\ArhkeLib\API\src\main\java\com\Arhke\ArhkeLib\Lib\Utils" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\willi\Desktop\ArhkeLib\API\src\main\java\com\Arhke\ArhkeLib\Lib\Utils\ItemUtil\CustomAttributes" />
     </key>

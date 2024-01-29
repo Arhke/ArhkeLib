@@ -14,19 +14,19 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class GUIManager extends MainBase<JavaPlugin> implements Listener {
-    public HashMap<UUID, InventoryGui<? extends JavaPlugin>> guiMap = new HashMap<>();
+    public HashMap<UUID, InventoryGui> guiMap = new HashMap<>();
     public GUIManager(JavaPlugin instance){
         super(instance);
     }
-    public void openGUI(Player player, InventoryGui<? extends JavaPlugin> gui){
+    public void openGUI(Player player, InventoryGui gui){
         guiMap.put(player.getUniqueId(), gui);
         player.openInventory(gui.getInventory());
     }
-    public InventoryGui<? extends JavaPlugin> remove(UUID uuid){
+    public InventoryGui remove(UUID uuid){
         return guiMap.remove(uuid);
 
     }
-    public InventoryGui<? extends JavaPlugin> get(UUID uuid){
+    public InventoryGui get(UUID uuid){
         return guiMap.get(uuid);
     }
 
@@ -34,21 +34,21 @@ public class GUIManager extends MainBase<JavaPlugin> implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent ice){
-        InventoryGui<? extends JavaPlugin> ig = this.get(ice.getWhoClicked().getUniqueId());
+        InventoryGui ig = this.get(ice.getWhoClicked().getUniqueId());
         if(ig != null){
             ig.onPress(ice);
         }
     }
     @EventHandler
     public void onClose(InventoryCloseEvent event){
-        InventoryGui<? extends JavaPlugin> ig = this.remove(event.getPlayer().getUniqueId());
+        InventoryGui ig = this.remove(event.getPlayer().getUniqueId());
         if(ig != null){
             ig.onClose(event);
         }
     }
     @EventHandler
     public void onOpen(InventoryOpenEvent event){
-        InventoryGui<? extends JavaPlugin> ig = this.get(event.getPlayer().getUniqueId());
+        InventoryGui ig = this.get(event.getPlayer().getUniqueId());
         if(ig != null){
             ig.onOpen(event);
         }

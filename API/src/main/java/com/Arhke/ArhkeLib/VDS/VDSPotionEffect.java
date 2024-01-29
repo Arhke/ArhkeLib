@@ -1,2 +1,4 @@
-package com.Arhke.ArhkeLib.VDS;public class VDSPotionEffect {
+package com.Arhke.ArhkeLib.VDS;
+
+public class VDSPotionEffect {
 }

@@ -184,21 +184,33 @@ public abstract class Base {
         target.setLastDamageCause(new EntityDamageEvent(attacker, EntityDamageEvent.DamageCause.ENTITY_ATTACK, damage));
 
     }
-    public static boolean isTargeteableLivingEntity(Entity entity) {
-        return entity instanceof Player && !entity.hasMetadata("NPC") && !isInProtectedRegion((Player)entity) && !entity.isDead();
+    public static void customDamage(LivingEntity attacker, LivingEntity target, double damage){
+        if(damage <= 0) return;
+        if(target.isDead()) return;
+        damage = Math.min(target.getHealth(), damage);
+        TrueDamageEvent event;
+        Bukkit.getPluginManager().callEvent(event = new TrueDamageEvent(attacker, target, damage));
+        if(event.isCancelled()) return;
+        target.setHealth(Math.max(0,target.getHealth()-event.getDamage()));
+        target.setLastDamageCause(new EntityDamageEvent(attacker, EntityDamageEvent.DamageCause.ENTITY_ATTACK, damage));
     }
-
-    public static boolean isTargeteableEntity(Entity entity) {
-        return isTargeteableLivingEntity(entity) || entity instanceof Item;
-    }
-
-    public static boolean isInProtectedRegion(Player player) {
-        return !WGBukkit.getRegionManager(player.getWorld()).getApplicableRegions(player.getLocation()).allows(DefaultFlag.PVP);
-    }
-
-    public static boolean isInProtectedRegion(Location loc) {
-        return !WGBukkit.getRegionManager(loc.getWorld()).getApplicableRegions(loc).allows(DefaultFlag.PVP);
-    }
+//    public static boolean isTargeteableLivingEntity(Entity entity) {
+//        return entity instanceof Player && !entity.hasMetadata("NPC") && !isInProtectedRegion((Player)entity) && !entity.isDead();
+//    }
+//
+//    public static boolean isTargeteableEntity(Entity entity) {
+//        return isTargeteableLivingEntity(entity) || entity instanceof Item;
+//    }
+//
+//    public static boolean isInProtectedRegion(Player player) {
+//        return !WGBukkit.getRegionManager(player.getWorld())
+//                .getApplicableRegions(player.getLocation())
+//                .allows(DefaultFlag.PVP);
+//    }
+//
+//    public static boolean isInProtectedRegion(Location loc) {
+//        return !WGBukkit.getRegionManager(loc.getWorld()).getApplicableRegions(loc).allows(DefaultFlag.PVP);
+//    }
     public static void setDisplayName(ItemStack is, String name) {
         ItemMeta im = is.getItemMeta();
         Objects.requireNonNull(im).setDisplayName(tcm(name));
