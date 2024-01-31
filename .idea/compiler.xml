@@ -8,16 +8,12 @@
         <outputRelativeToContentRoot value="true" />
         <module name="v1_18_R2" />
         <module name="v1_12_R2" />
+        <module name="ArhkeLib" />
         <module name="v1_8_8" />
-      </profile>
-      <profile name="Annotation profile for ArhkeLib" enabled="true">
-        <sourceOutputDir name="../target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="API" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="API" target="8" />
       <module name="v1_19_R2 (1)" target="8" />
     </bytecodeTargetLevel>
   </component>
