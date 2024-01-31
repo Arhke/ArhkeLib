@@ -39,6 +39,9 @@ public abstract class InventoryGui {
 	 */
 	public InventoryGui(int rows, String title){
 	    this.inventory = Bukkit.createInventory(null, Math.min(Math.max(1, rows), 6)*9, title);
+	}public InventoryGui(int rows, String title, Player player){
+	    this.inventory = Bukkit.createInventory(null, Math.min(Math.max(1, rows), 6)*9, title);
+	    setItems(player);
 	}
 	public abstract void setItems(Player p);
 	public void setItems(){setItems(null);}
@@ -51,13 +54,15 @@ public abstract class InventoryGui {
 		if (modifiesGUI(event)){
 			if(!(canModify || canModifySlots.contains(event.getRawSlot()))){
 				event.setCancelled(true);
-				int is = event.getRawSlot();
-				Consumer<InventoryClickEvent> cons = items.get(is);
-				if (cons != null){
-					cons.accept(event);
-					if(closeAfterPress)event.getWhoClicked().closeInventory();
-				}
+
 			}
+		}
+
+		int is = event.getRawSlot();
+		Consumer<InventoryClickEvent> cons = items.get(is);
+		if (cons != null){
+			cons.accept(event);
+			if(closeAfterPress)event.getWhoClicked().closeInventory();
 		}
 	}
     /**

@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="v1_18_R2" />
         <module name="v1_12_R2" />
-        <module name="v1_19_R2" />
         <module name="v1_8_8" />
       </profile>
       <profile name="Annotation profile for ArhkeLib" enabled="true">

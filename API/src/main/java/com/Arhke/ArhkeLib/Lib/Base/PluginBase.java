@@ -25,7 +25,7 @@ public abstract class PluginBase extends JavaPlugin {
     protected Hook hook;
     protected GUIManager guiManager;
     protected RecipeBuilder recipeBuilder;
-    {VersionUtil.setup(this);}
+//    {VersionUtil.setup(this);}
 
     public Hook getHook() {return hook;}
     public GUIManager getGUIManager(){

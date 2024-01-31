@@ -9,6 +9,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -19,8 +20,14 @@ public class GUIManager extends MainBase<JavaPlugin> implements Listener {
         super(instance);
     }
     public void openGUI(Player player, InventoryGui gui){
-        guiMap.put(player.getUniqueId(), gui);
-        player.openInventory(gui.getInventory());
+        player.closeInventory();
+        new BukkitRunnable(){
+            @Override
+            public void run(){
+                guiMap.put(player.getUniqueId(), gui);
+                player.openInventory(gui.getInventory());
+            }
+        }.runTaskLater(getPlugin(), 1);
     }
     public InventoryGui remove(UUID uuid){
         return guiMap.remove(uuid);
