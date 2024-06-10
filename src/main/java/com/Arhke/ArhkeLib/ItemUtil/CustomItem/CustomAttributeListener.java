@@ -83,7 +83,7 @@ public class CustomAttributeListener implements Listener {
                         le.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 60, 1, false, false));
                     }
                     if(ArmorTags.hasPlayerEffect(player, Attributes.CustomEffects.ONHITSLOW)){
-                        le.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 60, 1, false, false));
+                        le.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 60, 1, false, false));
                     }
                     if(ArmorTags.hasPlayerEffect(player, Attributes.CustomEffects.ONHITWITHER)){
                         le.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 90, 1, false, false));
@@ -102,15 +102,15 @@ public class CustomAttributeListener implements Listener {
                     }
                     if(ArmorTags.hasPlayerEffect(player, Attributes.CustomEffects.ONHITCLEANSER)){
                         le.removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
-                        le.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
-                        le.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+                        le.removePotionEffect(PotionEffectType.RESISTANCE);
+                        le.removePotionEffect(PotionEffectType.STRENGTH);
                         le.removePotionEffect(PotionEffectType.REGENERATION);
                         le.removePotionEffect(PotionEffectType.ABSORPTION);
                         le.removePotionEffect(PotionEffectType.HEALTH_BOOST);
                         le.removePotionEffect(PotionEffectType.WATER_BREATHING);
                         le.removePotionEffect(PotionEffectType.DOLPHINS_GRACE);
-                        le.removePotionEffect(PotionEffectType.FAST_DIGGING);
-                        le.removePotionEffect(PotionEffectType.JUMP);
+                        le.removePotionEffect(PotionEffectType.HASTE);
+                        le.removePotionEffect(PotionEffectType.JUMP_BOOST);
                         le.removePotionEffect(PotionEffectType.NIGHT_VISION);
                     }
                     if(ArmorTags.hasPlayerEffect(player, Attributes.CustomEffects.ANTIHEAL1)){
@@ -144,19 +144,19 @@ public class CustomAttributeListener implements Listener {
                 event.setDamage(val);
                 //blast
                 val = ArmorTags.getPlayerAttribute(player, Attributes.CustomAttributes.BLASTDMG) * damage;
-//                val = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, le, val);
+                val = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, le, val);
                 event.setDamage(EntityDamageEvent.DamageModifier.BASE, val + event.getDamage(EntityDamageEvent.DamageModifier.BASE));
                 //Proj
                 val = ArmorTags.getPlayerAttribute(player, Attributes.CustomAttributes.PROJDMG) * damage;
-//                val = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.PROJECTILE, le, val);
+                val = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.PROJECTILE, le, val);
                 event.setDamage(EntityDamageEvent.DamageModifier.BASE, val + event.getDamage(EntityDamageEvent.DamageModifier.BASE));
                 //Fire
                 val = ArmorTags.getPlayerAttribute(player, Attributes.CustomAttributes.FIREDMG) * damage;
-//                val = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.FIRE, le, val);
+                val = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.FIRE, le, val);
                 event.setDamage(EntityDamageEvent.DamageModifier.BASE, val + event.getDamage(EntityDamageEvent.DamageModifier.BASE));
                 //Magic
                 val = ArmorTags.getPlayerAttribute(player, Attributes.CustomAttributes.MAGICDMG) * damage;
-//                val = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.MAGIC, le, val);
+                val = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.MAGIC, le, val);
                 if(le instanceof Player) val = val * (1 - Math.min(1, ArmorTags.getPlayerAttribute((Player)le, Attributes.CustomAttributes.MAGICRESIST)));
                 event.setDamage(EntityDamageEvent.DamageModifier.BASE, val + event.getDamage(EntityDamageEvent.DamageModifier.BASE));
                 if(event.getFinalDamage() != 0){
@@ -197,7 +197,7 @@ public class CustomAttributeListener implements Listener {
                     event.setCancelled(true);
                     return;
                 }
-                if(event.getModifiedType().equals(PotionEffectType.SLOW) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.SLOWRESISTANCE)){
+                if(event.getModifiedType().equals(PotionEffectType.SLOWNESS) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.SLOWRESISTANCE)){
                     event.setCancelled(true);
                     return;
                 }if(event.getModifiedType().equals(PotionEffectType.HUNGER) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.HUNGERRESISTANCE)){
@@ -206,13 +206,13 @@ public class CustomAttributeListener implements Listener {
                 }if(event.getModifiedType().equals(PotionEffectType.BLINDNESS) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.BLINDRESISTANCE)){
                     event.setCancelled(true);
                     return;
-                }if(event.getModifiedType().equals(PotionEffectType.SLOW_DIGGING) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.FATIGUERESISTANCE)){
+                }if(event.getModifiedType().equals(PotionEffectType.MINING_FATIGUE) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.FATIGUERESISTANCE)){
                     event.setCancelled(true);
                     return;
                 }if(event.getModifiedType().equals(PotionEffectType.LEVITATION) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.LEVITATIONRESISTANCE)){
                     event.setCancelled(true);
                     return;
-                }if(event.getModifiedType().equals(PotionEffectType.CONFUSION) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.CONFUSIONRESISTANCE)){
+                }if(event.getModifiedType().equals(PotionEffectType.NAUSEA) && ArmorTags.hasPlayerEffect(p, Attributes.CustomEffects.CONFUSIONRESISTANCE)){
                     event.setCancelled(true);
                     return;
                 }
