@@ -25,19 +25,10 @@
             </resource>
         </resources>
         <plugins>
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-compiler-plugin</artifactId>-->
-            <!--                <version>2.5.1</version>-->
-            <!--                <configuration>-->
-            <!--                    <source>8</source>-->
-            <!--                    <target>8</target>-->
-            <!--                </configuration>-->
-            <!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.3.1-SNAPSHOT</version>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
 
@@ -47,14 +38,13 @@
                         </goals>
                         <configuration>
                             <finalName>${project.artifactId}-${project.version}</finalName>
-                            <outputDirectory>target</outputDirectory>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"><mainClass>package.Main</mainClass></transformer>
                             </transformers>
                             <artifactSet>
                                 <includes>
-                                    <include>com.Arhke.ArhkeLib:*</include>
+                                    <include>org.ejml:*</include>
                                 </includes>
                             </artifactSet>
                             <filters>
@@ -69,56 +59,19 @@
                                         <exclude>META-INF/**</exclude>
                                     </excludes>
                                 </filter>
+
                             </filters>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>org.apache.maven.plugins</groupId>-->
-            <!--                <artifactId>maven-shade-plugin</artifactId>-->
-            <!--                <version>3.3.1-SNAPSHOT</version>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-
-            <!--                        <phase>install</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>shade</goal>-->
-            <!--                        </goals>-->
-            <!--                        <configuration>-->
-            <!--                            <finalName>${parent.artifactId}-${parent.version}</finalName>-->
-            <!--                            <createDependencyReducedPom>false</createDependencyReducedPom>-->
-            <!--                            <transformers>-->
-            <!--                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"><mainClass>package.Main</mainClass></transformer>-->
-            <!--                            </transformers>-->
-            <!--                            <artifactSet>-->
-            <!--                                <includes>-->
-            <!--                                    <include>com.Arhke.ArhkeLib:*</include>-->
-            <!--                                </includes>-->
-            <!--                            </artifactSet>-->
-            <!--                            <filters>-->
-            <!--                                <filter>-->
-            <!--                                    <artifact>*:*</artifact>-->
-            <!--                                    <excludes>-->
-            <!--                                        <exclude>module-info.class</exclude>-->
-            <!--                                        <exclude>META-INF/*.SF</exclude>-->
-            <!--                                        <exclude>META-INF/*.MF</exclude>-->
-            <!--                                        <exclude>META-INF/*.DSA</exclude>-->
-            <!--                                        <exclude>META-INF/*.RSA</exclude>-->
-            <!--                                        <exclude>META-INF/**</exclude>-->
-            <!--                                    </excludes>-->
-            <!--                                </filter>-->
-            <!--                            </filters>-->
-            <!--                        </configuration>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>16</source>
+                    <target>16</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -163,18 +116,29 @@
             <id>sk89q-repo</id>
             <url>https://maven.enginehub.org/repo/</url>
         </repository>
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/maven-public/</url>
+        </repository>
     </repositories>
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>at.pavlov</groupId>-->
-<!--            <artifactId>Cannons</artifactId>-->
-<!--            <version>2.5.2</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>net.dmulloy2</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>5.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <classifier>remapped-mojang</classifier>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -183,12 +147,12 @@
             <version>7.2.8-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>at.pavlov</groupId>
-            <artifactId>Cannons</artifactId>
-            <version>2.5.13</version>
-            <scope>provided</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>at.pavlov</groupId>-->
+<!--            <artifactId>Cannons</artifactId>-->
+<!--            <version>2.5.13</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -217,16 +181,10 @@
             <version>2.9.2</version>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.sk89q.worldguard</groupId>-->
-<!--            <artifactId>worldguard-bukkit</artifactId>-->
-<!--            <version>7.0.6</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
-            <artifactId>worldguard-legacy</artifactId>
-            <version>6.2</version>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>7.0.12</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

@@ -15,6 +15,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -23,7 +24,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@SuppressWarnings("unused")
+@SuppressWarnings("ALL")
 public abstract class Base {
     static boolean isPlaceholderAPI = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null;
     static Random rand = new Random();
@@ -166,7 +167,18 @@ public abstract class Base {
         is.setAmount(is2.getAmount());
         return is2.toString().equals(is.toString());
     }
-
+    public static boolean itemIsSimilarIgnoreDura(ItemStack iss1, ItemStack iss2) {
+        ItemStack is1 = new ItemStack(iss1);
+        ItemStack is2 = new ItemStack(iss2);
+        if(is1.getItemMeta() instanceof Damageable dm1 && is2.getItemMeta() instanceof Damageable dm2) {
+            dm1.setDamage(dm2.getDamage());
+            is1.setItemMeta(dm1);
+            dm2.setDamage(dm1.getDamage());
+            is2.setItemMeta(dm2);
+        }
+        is1.setAmount(is2.getAmount());
+        return is2.toString().equals(is1.toString());
+    }
     public static void trueDamage(LivingEntity attacker, LivingEntity target, double damage){
         if(damage <= 0) return;
         if(target.isDead()) return;
@@ -211,7 +223,7 @@ public abstract class Base {
         is.setItemMeta(im);
     }
     public static void highlightItem(ItemStack is){
-        ItemUtil.addEnchant(is, Enchantment.ARROW_INFINITE, 1, true);
+        ItemUtil.addEnchant(is, Enchantment.INFINITY, 1, true);
     }
 
 

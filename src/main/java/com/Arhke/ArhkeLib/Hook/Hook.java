@@ -1,13 +1,21 @@
 package com.Arhke.ArhkeLib.Hook;
 
 
-import at.pavlov.cannons.API.CannonsAPI;
-import at.pavlov.cannons.Cannons;
+//import at.pavlov.cannons.API.CannonsAPI;
+//import at.pavlov.cannons.Cannons;
 import com.Arhke.ArhkeLib.Base.MainBase;
+import com.comphenix.protocol.ProtocolLib;
 import com.earth2me.essentials.Essentials;
+import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 //import com.sk89q.worldguard.WorldGuard;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.protection.flags.Flags;
+import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.managers.RegionManager;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+import com.sk89q.worldguard.protection.regions.RegionQuery;
 import de.tr7zw.nbtapi.plugin.NBTAPI;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
@@ -30,10 +38,15 @@ public class Hook extends MainBase<JavaPlugin> {
 	private Permission perm;
 //	private WorldGuard worldGuard;
 	private WorldGuardPlugin wgPlugin;
-	private CannonsAPI cannonsAPI;
-	private Cannons cannons;
+//	private CannonsAPI cannonsAPI;
+//	private Cannons cannons;
 	private WorldEditPlugin worldEdit;
 	private NBTAPI nbtapi;
+
+
+
+	private ProtocolLib protocolLib;
+
 	public Hook(JavaPlugin instance, Plugins... plugins){
 		super(instance);
 		List<Plugins> pluginsList = Arrays.asList(plugins);
@@ -55,9 +68,12 @@ public class Hook extends MainBase<JavaPlugin> {
 		if (pluginsList.contains(Plugins.NBTAPI)  && !setUpNBTAPI()) {
 			exceptDisable("Disabled due to no NBTAPI Dependency Found");
 		}
-		if (pluginsList.contains(Plugins.CANNONS)  && !setUpCannons()) {
-			exceptDisable("Disabled due to no Cannons Dependency Found");
+		if (pluginsList.contains(Plugins.PROTOCOLLIB)  && !setUpProtocolLib()) {
+			exceptDisable("Disabled due to no NBTAPI Dependency Found");
 		}
+//		if (pluginsList.contains(Plugins.CANNONS)  && !setUpCannons()) {
+//			exceptDisable("Disabled due to no Cannons Dependency Found");
+//		}
 	}
 
 	//==============<SetUp>==================
@@ -94,7 +110,6 @@ public class Hook extends MainBase<JavaPlugin> {
 			return false;
 		}
 		this.wgPlugin = (WorldGuardPlugin) plugin;
-//		this.worldGuard =  WorldGuard.getInstance();
 		return true;
 	}
 	boolean setUpWorldEdit() {
@@ -115,16 +130,25 @@ public class Hook extends MainBase<JavaPlugin> {
 		this.nbtapi = (NBTAPI) plugin;
 		return true;
 	}
-	boolean setUpCannons() {
-		Plugin plug = Bukkit.getPluginManager().getPlugin("Cannons");
+	boolean setUpProtocolLib(){
+		Plugin plugin = Bukkit.getPluginManager().getPlugin("ProtocolLib");
 
-		if (plug instanceof Cannons) {
-			this.cannons = ((Cannons) plug);
-			this.cannonsAPI = cannons.getCannonsAPI();
-			return true;
+		if (!(plugin instanceof ProtocolLib)) {
+			return false;
 		}
-		return false;
+		this.protocolLib = (ProtocolLib) plugin;
+		return true;
 	}
+//	boolean setUpCannons() {
+//		Plugin plug = Bukkit.getPluginManager().getPlugin("Cannons");
+//
+//		if (plug instanceof Cannons) {
+//			this.cannons = ((Cannons) plug);
+//			this.cannonsAPI = cannons.getCannonsAPI();
+//			return true;
+//		}
+//		return false;
+//	}
 	//==================<Get>=====================
 	public WorldEditPlugin getWorldEdit(){
 		return worldEdit;
@@ -188,37 +212,65 @@ public class Hook extends MainBase<JavaPlugin> {
 		}.register();
 	}
 	//===============<WorldGuard Stuff>==========
-//	public  boolean hasWG() {
-//		return worldGuard!=null;
-//	}
-//	public boolean isInRegion(Location location, String name){
-//		RegionManager rm = this.worldGuard.getPlatform().getRegionContainer().get(BukkitAdapter.adapt(Objects.requireNonNull(location.getWorld())));
-//		if(rm == null)return false;
-//		ProtectedRegion region = rm.getRegion(name);
-//		if(region == null) return false;
-//		return region.contains(location.getBlockX(), location.getBlockY(), location.getBlockZ());
-//	}
-//	public ProtectedRegion getRegion(World world, String name){
-//		RegionManager rm = this.worldGuard.getPlatform().getRegionContainer().get(BukkitAdapter.adapt(world));
-//		if(rm == null)return null;
-//		return rm.getRegion(name);
-//	}
-//	public boolean canPVP(Player p, Location location) {
-//		return canWG(p, location, Flags.PVP);
-//	}
-//	public boolean canBuild(Player p, Location location) {
-//		return canWG(p, location, Flags.BUILD);
-//	}
-//	public boolean canBuild(Player p, Block b) {
-//		return canBuild(p, b.getLocation());
-//	}
-//	public boolean canWG(Player p, Location location, StateFlag... flags){
-//		if(worldGuard.getPlatform().getSessionManager().hasBypass(wgPlugin.wrapPlayer(p), BukkitAdapter.adapt(Objects.requireNonNull(location.getWorld())))){
-//			return true;
-//		}
-//		return worldGuard.getPlatform().getRegionContainer().createQuery().testState(BukkitAdapter.adapt(location), wgPlugin.wrapPlayer(p), flags);
-//
-//	}
+	/**
+	 * Checks if a region exists and contains the specified location.
+	 */
+	public boolean isInRegion(Location location, String regionName) {
+		if (location.getWorld() == null) return false;
+
+		RegionManager rm = getRegionManager(location.getWorld());
+		if (rm == null) return false;
+
+		ProtectedRegion region = rm.getRegion(regionName);
+		if (region == null) return false;
+
+		return region.contains(BukkitAdapter.asBlockVector(location));
+	}
+
+	/**
+	 * Retrieves a region by name from a specific world.
+	 */
+	public ProtectedRegion getRegion(World world, String name) {
+		RegionManager rm = getRegionManager(world);
+		return (rm != null) ? rm.getRegion(name) : null;
+	}
+
+	/**
+	 * Checks if a player can perform PVP at a location based on flags.
+	 */
+	public boolean canPVP(Player player, Location location) {
+		return testStateFlag(player, location, Flags.PVP);
+	}
+
+	/**
+	 * Checks if a player can build at a block.
+	 */
+	public boolean canBuild(Player player, Block block) {
+		return testStateFlag(player, block.getLocation(), Flags.BUILD);
+	}
+
+	/**
+	 * The core flag-checking logic.
+	 */
+	public boolean testStateFlag(Player player, Location location, StateFlag... flags) {
+		// 1. Check for Bypass (OPs or players with 'worldguard.region.bypass.<world>')
+		if (WorldGuard.getInstance().getPlatform().getSessionManager().hasBypass(
+				WorldGuardPlugin.inst().wrapPlayer(player),
+				BukkitAdapter.adapt(location.getWorld()))) {
+			return true;
+		}
+
+		// 2. Query the location for the specified flags
+		RegionQuery query = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery();
+		return query.testState(BukkitAdapter.adapt(location), WorldGuardPlugin.inst().wrapPlayer(player), flags);
+	}
+
+	/**
+	 * Internal helper to get the RegionManager for a world.
+	 */
+	private RegionManager getRegionManager(World world) {
+		return WorldGuard.getInstance().getPlatform().getRegionContainer().get(BukkitAdapter.adapt(world));
+	}
 	//==============<WorldEdit Stuff>=============
 	public void setBlock(Location loc1, Location loc2, Material mat){
 //		if (loc1.getWorld() == null || !Objects.equals(loc1.getWorld(), loc2.getWorld())) return;
@@ -295,14 +347,16 @@ public class Hook extends MainBase<JavaPlugin> {
 		}
 
 	}
-
+	public ProtocolLib getProtocolLib() {
+		return this.protocolLib;
+	}
 	//==============<Cannons>=================
-	public Cannons getCannons(){
-		return this.cannons;
-	}
-	public CannonsAPI getCannonsAPI(){
-		return this.cannonsAPI;
-	}
+//	public Cannons getCannons(){
+//		return this.cannons;
+//	}
+//	public CannonsAPI getCannonsAPI(){
+//		return this.cannonsAPI;
+//	}
 	//target ability
 //	public static boolean isTargeteableEntity(Entity entity){
 //		return isTargeteableLivingEntity(entity) || entity instanceof Item;

@@ -4,3 +4,11 @@ version: ${project.version}
 api-version: 1.16
 main: com.Arhke.ArhkeLib.ArhkeLib
 softdepend: [PlaceholderAPI, NBTAPI, Vault, Essentials, WorldEdit, WorldGuard, Cannons]
+commands:
+  addattribute:
+    description: Adds an ArhkeLib attribute to the held item
+    usage: /addattribute <Attribute> <Slot> <Operation> <Strength>
+  itemflag:
+    description: Toggles ItemFlags or Unbreakable state on the held item.
+    usage: /itemflag <Flag>
+    permission-message: §cYou do not have permission to use this command.

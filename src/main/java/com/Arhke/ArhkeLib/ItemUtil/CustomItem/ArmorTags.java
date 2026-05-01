@@ -1,11 +1,20 @@
 package com.Arhke.ArhkeLib.ItemUtil.CustomItem;
 
 import com.Arhke.ArhkeLib.Base.Base;
-import de.tr7zw.nbtapi.*;
+import de.tr7zw.nbtapi.NBTItem;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlotGroup;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.Arrays;
+import java.util.Locale;
+
+@SuppressWarnings({"UnstableApiUsage", "DataFlowIssue", "ConstantValue", "EqualsBetweenInconvertibleTypes"})
 public class ArmorTags extends Base {
     NBTItem _nbti;
     public static final String AttrModifiers = "AttributeModifiers";
@@ -34,22 +43,12 @@ public class ArmorTags extends Base {
         }
     }
     private void applyTag(String identifier, Slot slot, Attributes.MCAttributes attribute, Operations operation, double strength){
-        NBTCompoundList nbtlist = _nbti.getCompoundList(AttrModifiers);
-        for (NBTListCompound NLC : nbtlist) {
-            if (NLC.getString(Name).equals(identifier) && NLC.getString(AttributeName).equals(attribute.getName())) {
-                NLC.setDouble(Amount, NLC.getDouble(Amount) + strength);
-                NLC.setInteger(Operation, operation.getID());
-                return;
-            }
-        }
-        NBTListCompound NLC = nbtlist.addCompound();
-        NLC.setDouble(Amount, strength);
-        NLC.setString(AttributeName,  attribute.getName());
-        NLC.setString(Name, identifier);
-        NLC.setInteger(Operation, operation.getID());
-        NLC.setInteger(UUIDLeast, Base.randInt(2147483647));
-        NLC.setInteger(UUIDMost, Base.randInt(2147483647));
-        NLC.setString(SlotString, slot.getID());
+        ItemStack is = _nbti.getItem();
+        ItemMeta im = is.getItemMeta();
+        im.addAttributeModifier(attribute.getAttr(), new AttributeModifier(new NamespacedKey("arhkelib", identifier.toLowerCase(Locale.ROOT))
+                , strength, operation.getOperation(), slot.getEsg()));
+        is.setItemMeta(im);
+        _nbti = new NBTItem(is);
     }
     private void applyTag(String identifier, Slot slot, Attributes.CustomAttributes attribute, double strength){
         if (strength == 0) return;
@@ -82,7 +81,7 @@ public class ArmorTags extends Base {
         }
     }
     private void removeTag(String identifier, Attributes.MCAttributes attribute){
-        _nbti.getCompoundList(AttrModifiers).removeIf(NLC -> NLC.getString(Name).equals(identifier) && NLC.getString(AttributeName).equals(attribute.getName()));
+        _nbti.getCompoundList(AttrModifiers).removeIf(NLC -> NLC.getString(Name).equals(identifier) && NLC.getString(AttributeName).equals(attribute.getAttr()));
     }
     private void removeTag(String identifier, Attributes.CustomAttributes attribute){
         if(_nbti.hasKey(attribute.name())){
@@ -91,7 +90,7 @@ public class ArmorTags extends Base {
             StringBuilder updateEntry = new StringBuilder();
             for (String attributeEntry: attributeEntries){
                 if(!attributeEntry.endsWith(identifier)){
-                    if(updateEntry.length() != 0){
+                    if(!updateEntry.isEmpty()){
                         updateEntry.append(',');
                     }
                     updateEntry.append(attributeEntry);
@@ -110,7 +109,7 @@ public class ArmorTags extends Base {
             StringBuilder updateEntry = new StringBuilder();
             for (String attributeEntry: attributeEntries){
                 if(!attributeEntry.endsWith(identifier)){
-                    if(updateEntry.length() != 0){
+                    if(!updateEntry.isEmpty()){
                         updateEntry.append(',');
                     }
                     updateEntry.append(attributeEntry);
@@ -310,13 +309,20 @@ public class ArmorTags extends Base {
         }
         return value.indexOf(slotnum+":") != -1;
     }
-
+//    @Deprecated
+//    public void hideFlags(Flag... flags){
+//        int count = 0;
+//        for(Flag flag:flags){
+//            count += flag.getID();
+//        }
+//        _nbti.setInteger(HideFlags,count);
+//    }
     public void hideFlags(Flag... flags){
-        int count = 0;
-        for(Flag flag:flags){
-            count += flag.getID();
-        }
-        _nbti.setInteger(HideFlags,count);
+        ItemStack is = _nbti.getItem();
+        ItemMeta im = is.getItemMeta();
+        im.addItemFlags(Arrays.stream(flags).map(Flag::getItemFlag).toArray(ItemFlag[]::new));
+        is.setItemMeta(im);
+        _nbti = new NBTItem(is);
     }
 
     public ItemStack getItem(){
@@ -326,35 +332,56 @@ public class ArmorTags extends Base {
 
 
     public enum Operations {
-        ADD(0), MULTIPLYBASE(1), MULTIPLY(2);
+        ADD(0, AttributeModifier.Operation.ADD_NUMBER), MULTIPLYBASE(1, AttributeModifier.Operation.ADD_SCALAR), MULTIPLY(2, AttributeModifier.Operation.MULTIPLY_SCALAR_1);
         final int _id;
-        Operations(int id){
+        final AttributeModifier.Operation op;
+        Operations(int id, AttributeModifier.Operation op){
             _id = id;
+            this.op = op;
         }
         public int getID() {
             return _id;
         }
+        public AttributeModifier.Operation getOperation(){
+            return op;
+        }
     }
     public enum Flag {
-        ENCHANTMENTS(1), ATTRIBUTEMODIFIERS(2), UNBREAKABLE(4), CANDESTROY(8), CANPLACEMOBS(16), OTHER(32), DYED(64);
+        ENCHANTMENTS(1, ItemFlag.HIDE_ENCHANTS),
+        ATTRIBUTEMODIFIERS(2, ItemFlag.HIDE_ATTRIBUTES),
+        UNBREAKABLE(4, ItemFlag.HIDE_UNBREAKABLE),
+        CANDESTROY(8, ItemFlag.HIDE_DESTROYS),
+        CANPLACEMOBS(16, ItemFlag.HIDE_PLACED_ON),
+        OTHER(32, ItemFlag.HIDE_ADDITIONAL_TOOLTIP),
+        DYED(64, ItemFlag.HIDE_DYE);
         final int _id;
-        Flag(int id){
+        final ItemFlag ife;
+        Flag(int id, ItemFlag ife){
             _id = id;
+            this.ife = ife;
         }
         public int getID(){
             return _id;
         }
+        public ItemFlag getItemFlag(){
+            return ife;
+        }
     }
     public enum Slot{
-        MAINHAND(5, "mainhand", "Main Hand"), OFFHAND(4, "offhand", "Off Hand"),
-        HELMET(3, "head", "Head"), CHESTPLATE(2, "chest", "Chest"), LEGGINGS(1, "legs", "Legs"), BOOTS(0, "feet", "Feet");
+        MAINHAND(EquipmentSlotGroup.MAINHAND,5, "mainhand", "Main Hand"), OFFHAND(EquipmentSlotGroup.OFFHAND,4, "offhand", "Off Hand"),
+        HELMET(EquipmentSlotGroup.HEAD,3, "head", "Head"), CHESTPLATE(EquipmentSlotGroup.CHEST,2, "chest", "Chest"), LEGGINGS(EquipmentSlotGroup.LEGS,1, "legs", "Legs"), BOOTS(EquipmentSlotGroup.FEET,0, "feet", "Feet");
+        private final EquipmentSlotGroup esg;
         private final String _id;
         private final String _name;
         private final int _code;
-        Slot(int code, String id, String name){
+        Slot(EquipmentSlotGroup esg, int code, String id, String name){
+            this.esg = esg;
             _code = code;
             _name = name;
             _id = id;
+        }
+        public EquipmentSlotGroup getEsg() {
+            return esg;
         }
         public String getName() {
             return _name;
@@ -365,6 +392,7 @@ public class ArmorTags extends Base {
         public int getCode(){
             return _code;
         }
+
         @Override
         public String toString() {
             return _id;

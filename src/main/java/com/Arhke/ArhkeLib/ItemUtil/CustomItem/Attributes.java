@@ -1,16 +1,19 @@
 package com.Arhke.ArhkeLib.ItemUtil.CustomItem;
 
 
+import org.bukkit.attribute.Attribute;
+
 public interface Attributes {
     enum MCAttributes implements Attributes {
 
-        MAXHEALTH("generic.maxHealth", "Max Health"), KNOCKBACKRESIST("generic.knockbackResistance", "KnockBack Resist"),
-        ATTACKDAMAGE("generic.attackDamage", "Attack Damage"), ARMOR("generic.armor", "Armor"),
-        ARMORTOUGHNESS("generic.armorToughness", "Armor Toughness"), ATTACKSPEED("generic.attackSpeed", "Attack Speed"),
-        LUCK("generic.luck", "Luck"), SPEED("generic.movementSpeed", "Speed");
-        final String name, verbose;
-        MCAttributes(String name, String newname){
-            this.name = name; this.verbose = newname;
+        MAXHEALTH(Attribute.MAX_HEALTH, "Max Health"), KNOCKBACKRESIST(Attribute.KNOCKBACK_RESISTANCE, "KnockBack Resist"),
+        ATTACKDAMAGE(Attribute.ATTACK_DAMAGE, "Attack Damage"), ARMOR(Attribute.ARMOR, "Armor"),
+        ARMORTOUGHNESS(Attribute.ARMOR_TOUGHNESS, "Armor Toughness"), ATTACKSPEED(Attribute.ATTACK_SPEED, "Attack Speed"),
+        LUCK(Attribute.LUCK, "Luck"), SPEED(Attribute.MOVEMENT_SPEED, "Speed");
+        final Attribute attr;
+        final String verbose;
+        MCAttributes(Attribute attr, String newname){
+            this.attr = attr; this.verbose = newname;
         }
         public static MCAttributes getAttribute(String identifier){
             for(MCAttributes attr: MCAttributes.values()){
@@ -20,16 +23,19 @@ public interface Attributes {
             }
             return null;
         }
-        public String getName() {
-            return name;
+        public Attribute getAttr() {
+            return attr;
         }
         public String getVerbose(){
             return this.verbose;
         }
     }
     enum CustomAttributes implements Attributes{
-        DODGE("Dodge"), DEFLECT("Deflect"), HEALING("Healing"), DEFENSE("Defense"), RANGEDDAMAGE("Ranged Damage"),DURABILITY("Durability"), CRITDMG("Crit Damage"), MAGICRESIST("Magic Resist"),
-        PHYSDMG("&7Physical Damage"), MAGICDMG("&9Magic Damage"), FIREDMG("&cFire Damage"), BLASTDMG("&4Blast Damage"), PROJDMG("&2Projectile Damage"), LIFESTEAL("Lifesteal"), HUNGER("Hunger Reduction");
+        DODGE("Hit Dodge Chance"), DEFLECT("Arrow Deflect Chance"), HEALING("Healing"), DEFENSE("Flat Damage Reduction"),
+        RANGEDDAMAGE("Ranged Damage"),DURABILITY("Durability"), CRITDMG("Crit Damage"), MAGICRESIST("Magic Resist"),
+        PHYSDMG("&7Physical Damage"), MAGICDMG("&bMagic Damage"), FIREDMG("&cFire Damage"), BLASTDMG("&4Blast Damage"),
+        PROJDMG("&2Projectile Damage"), LIFESTEAL("Lifesteal"), HUNGER("Hunger Reduction"),
+        DMGCAP("Max Damage Taken &7(per hit)");
 
 
         public static CustomAttributes getAttribute(String identifier){
@@ -51,11 +57,11 @@ public interface Attributes {
 
     }
     enum CustomEffects implements Attributes{
-        ONHITPOISON("Poisonous Blade"), POISONRESISTANCE("Poison Immunity"), ONHITWITHER("Corruption Touch"), WITHERRESISTANCE("Wither Immunity"), ONHITWEAKNESS("Degrading Weakness"),
-        WEAKNESSRESISTANCE("Weakness Immunity"),ONHITBLIND("Blinding Light"), BLINDRESISTANCE("Un-Blind-able"), ONHITSLOW("Leg Breaker"), SLOWRESISTANCE("Slowness Immunity"),
-        ONHITHEAL("Vampirism"), ANTIHEAL1("Painful Wounds"), ANTIHEAL2("Nasty Wounds"), ANTIHEAL3("Grievous Wounds"), ANTIHEAL4("Life-Threatening Wounds"), ANTIHEALRESISTANCE("Anti-Heal Immunity"),
-        ONHITABSORPTION("Shielding"), ONHITCLEANSER("Anti-Potion Buff"), ONHITHUNGER("Starv'em"), HUNGERRESISTANCE("Hunger Immunity"),
-        FATIGUERESISTANCE("Fatigue Immunity"), LEVITATIONRESISTANCE("Levitation Immunity"), CONFUSIONRESISTANCE("Confusion Immunity");
+        ONHITPOISON("Poisonous Blade"), POISONRESISTANCE("Poison Immunity"), ONHITWITHER("Withering Touch"), WITHERRESISTANCE("Wither Immunity"), ONHITWEAKNESS("Weakening Hit"),
+        WEAKNESSRESISTANCE("Weakness Immunity"),ONHITBLIND("Blinding Attack"), BLINDRESISTANCE("Blind Immunity"), ONHITSLOW("Slow-On-Hit"), SLOWRESISTANCE("Slowness Immunity"),
+        ONHITHEAL("Vampire-ism"), ANTIHEAL1("25% Anti-Heal"), ANTIHEAL2("40% Anti-Heal"), ANTIHEAL3("60% Anti-Heal"), ANTIHEAL4("100% Anti-Heal"), ANTIHEALRESISTANCE("Anti-Heal Immunity"),
+        ONHITABSORPTION("Absorption On-Hit"), ONHITREGENERATION("Regeneration On-Hit"), ONHITCLEANSER("Anti-Potion Buff"), ONHITHUNGER("Starving Touch"), HUNGERRESISTANCE("Hunger Effect Immunity"),
+        FATIGUERESISTANCE("Mining-Fatigue Immunity"), LEVITATIONRESISTANCE("Levitation Immunity"), CONFUSIONRESISTANCE("Confusion Immunity"), MACERESISTANCE("Complete Mace Immunity");
         public static CustomEffects getAttribute(String identifier){
             for(CustomEffects attr: CustomEffects.values()){
                 if(attr.name().equals(identifier)){

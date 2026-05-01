@@ -3,11 +3,13 @@ package com.Arhke.ArhkeLib.Base;
 import com.Arhke.ArhkeLib.Configs.ConfigFile;
 import com.Arhke.ArhkeLib.Configs.ConfigLoader;
 import com.Arhke.ArhkeLib.CustomEvents.CustomEventListeners.ArmorEquipListener;
+import com.Arhke.ArhkeLib.CustomEvents.CustomEventListeners.DamageIndicatorListener;
 import com.Arhke.ArhkeLib.CustomEvents.CustomEventListeners.MoveChunkListener;
 import com.Arhke.ArhkeLib.FileIO.ConfigManager;
 import com.Arhke.ArhkeLib.GUI.GUIManager;
 import com.Arhke.ArhkeLib.Hook.Hook;
 import com.Arhke.ArhkeLib.Hook.Plugins;
+import com.Arhke.ArhkeLib.Hook.PredictiveXpSync;
 import com.Arhke.ArhkeLib.ItemUtil.CustomItem.CustomAttributeListener;
 import com.Arhke.ArhkeLib.ItemUtil.RecipeBuilder;
 import com.Arhke.ArhkeLib.Utils.version.Version;
@@ -25,7 +27,6 @@ public abstract class PluginBase extends JavaPlugin {
     protected Hook hook;
     protected GUIManager guiManager;
     protected RecipeBuilder recipeBuilder;
-//    {VersionUtil.setup(this);}
 
     public Hook getHook() {return hook;}
     public GUIManager getGUIManager(){
@@ -56,7 +57,13 @@ public abstract class PluginBase extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(this.guiManager, this);
     }
     public void registerCustomAttributeEvents(){
-        Bukkit.getPluginManager().registerEvents(new CustomAttributeListener(), this);
+        Bukkit.getPluginManager().registerEvents(new CustomAttributeListener(this), this);
+    }
+    public void registerDamageIndicators(){
+        Bukkit.getPluginManager().registerEvents(new DamageIndicatorListener(this), this);
+    }
+    public void registerEconXPSync(){
+        Bukkit.getPluginManager().registerEvents(new PredictiveXpSync(getHook().getEcon()), this);
     }
     public void registerHooks(Plugins... support) {
         this.hook = new Hook(this, support);

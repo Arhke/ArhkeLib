@@ -3,6 +3,10 @@ package com.Arhke.ArhkeLib.Utils;
 import java.util.Scanner;
 
 public class PluginYamlBuilder {
+    public static void main(String[] args){
+        int a = 5;
+        System.out.println(a++ + a++);
+    }
     public static void build(Class<?> clazz){
         System.out.println("hi");
         StringBuilder sb = new StringBuilder();
