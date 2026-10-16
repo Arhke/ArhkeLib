@@ -185,7 +185,7 @@ public class AddAttributeCommand implements CommandExecutor, TabCompleter {
     private String generateLoreLine(Attributes attribute, double strength, ArmorTags.Slot slot) {
         if (slot == ArmorTags.Slot.MAINHAND) {
             if (attribute == Attributes.MCAttributes.ATTACKDAMAGE) {
-                return ChatColor.DARK_GREEN + " " + (strength == (long)strength ? (long)strength : strength) + " Attack Damage";
+                return ChatColor.DARK_GREEN + " " + (strength == (long)strength ? (long)strength+1 : strength+1) + " Attack Damage";
             } else if (attribute == Attributes.MCAttributes.ATTACKSPEED) {
                 double speedVal = 4.0 + strength;
                 String speedStr = speedVal == (long) speedVal ? String.valueOf((long) speedVal) : String.format("%.2f", speedVal);
@@ -198,12 +198,13 @@ public class AddAttributeCommand implements CommandExecutor, TabCompleter {
         }
 
         boolean isPercentage = isPercentageAttribute(attribute);
+        if(attribute == Attributes.MCAttributes.SPEED) strength *= 10;
         return loreAssist(attribute.getVerbose(), strength, true, isPercentage);
     }
 
     private String loreAssist(String display, double strength, boolean displayNum, boolean percentage) {
         if (strength == 0) return "";
-        String add = strength < 0 ? tcm("&c - ") : tcm("&9 + ");
+        String add = strength < 0 ? tcm("&c-") : tcm("&9+");
 
         if (displayNum) {
             if (percentage) {
@@ -222,7 +223,7 @@ public class AddAttributeCommand implements CommandExecutor, TabCompleter {
             return mc == Attributes.MCAttributes.SPEED || mc == Attributes.MCAttributes.KNOCKBACKRESIST;
         } else if (attribute instanceof Attributes.CustomAttributes ca) {
             return switch (ca) {
-                case DODGE, DEFLECT, HEALING, DURABILITY, MAGICRESIST, PHYSDMG, MAGICDMG, FIREDMG, PROJDMG, BLASTDMG,
+                case RANGEDDAMAGE, DODGE, DEFLECT, HEALING, DURABILITY, MAGICRESIST, PHYSDMG, MAGICDMG, FIREDMG, PROJDMG, BLASTDMG,
                      LIFESTEAL, HUNGER -> true;
                 default -> false;
             };

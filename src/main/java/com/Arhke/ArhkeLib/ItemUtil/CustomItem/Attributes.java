@@ -6,10 +6,35 @@ import org.bukkit.attribute.Attribute;
 public interface Attributes {
     enum MCAttributes implements Attributes {
 
-        MAXHEALTH(Attribute.MAX_HEALTH, "Max Health"), KNOCKBACKRESIST(Attribute.KNOCKBACK_RESISTANCE, "KnockBack Resist"),
-        ATTACKDAMAGE(Attribute.ATTACK_DAMAGE, "Attack Damage"), ARMOR(Attribute.ARMOR, "Armor"),
-        ARMORTOUGHNESS(Attribute.ARMOR_TOUGHNESS, "Armor Toughness"), ATTACKSPEED(Attribute.ATTACK_SPEED, "Attack Speed"),
-        LUCK(Attribute.LUCK, "Luck"), SPEED(Attribute.MOVEMENT_SPEED, "Speed");
+        MAXHEALTH(Attribute.MAX_HEALTH, "Max Health"),
+        KNOCKBACKRESIST(Attribute.KNOCKBACK_RESISTANCE, "Knockback Resistance"),
+        SPEED(Attribute.MOVEMENT_SPEED, "Speed"),
+        FLYING_SPEED(Attribute.FLYING_SPEED, "Flying Speed"),
+        ATTACKDAMAGE(Attribute.ATTACK_DAMAGE, "Attack Damage"),
+        ATTACK_KNOCKBACK(Attribute.ATTACK_KNOCKBACK, "Attack Knockback"),
+        ATTACKSPEED(Attribute.ATTACK_SPEED, "Attack Speed"),
+        ARMOR(Attribute.ARMOR, "Armor"),
+        ARMORTOUGHNESS(Attribute.ARMOR_TOUGHNESS, "Armor Toughness"),
+        FALL_DAMAGE_MULTIPLIER(Attribute.FALL_DAMAGE_MULTIPLIER, "Fall Damage Multiplier"),
+        LUCK(Attribute.LUCK, "Luck"),
+        MAX_ABSORPTION(Attribute.MAX_ABSORPTION, "Max Absorption"),
+        SAFE_FALL_DISTANCE(Attribute.SAFE_FALL_DISTANCE, "Safe Fall Distance"),
+        SCALE(Attribute.SCALE, "Scale"),
+        STEP_HEIGHT(Attribute.STEP_HEIGHT, "Step Height"),
+        GRAVITY(Attribute.GRAVITY, "Gravity"),
+        JUMP_STRENGTH(Attribute.JUMP_STRENGTH, "Jump Strength"),
+        BURNING_TIME(Attribute.BURNING_TIME, "Burning Time"),
+        EXPLOSION_KNOCKBACK_RESISTANCE(Attribute.EXPLOSION_KNOCKBACK_RESISTANCE, "Explosion Knockback Resistance"),
+        MOVEMENT_EFFICIENCY(Attribute.MOVEMENT_EFFICIENCY, "Movement Efficiency"),
+        OXYGEN_BONUS(Attribute.OXYGEN_BONUS, "Oxygen Bonus"),
+        WATER_MOVEMENT_EFFICIENCY(Attribute.WATER_MOVEMENT_EFFICIENCY, "Water Movement Efficiency"),
+        BLOCK_INTERACTION_RANGE(Attribute.BLOCK_INTERACTION_RANGE, "Block Interaction Range"),
+        ENTITY_INTERACTION_RANGE(Attribute.ENTITY_INTERACTION_RANGE, "Entity Interaction Range"),
+        BLOCK_BREAK_SPEED(Attribute.BLOCK_BREAK_SPEED, "Block Break Speed"),
+        MINING_EFFICIENCY(Attribute.MINING_EFFICIENCY, "Mining Efficiency"),
+        SNEAKING_SPEED(Attribute.SNEAKING_SPEED, "Sneaking Speed"),
+        SUBMERGED_MINING_SPEED(Attribute.SUBMERGED_MINING_SPEED, "Submerged Mining Speed"),
+        SWEEPING_DAMAGE_RATIO(Attribute.SWEEPING_DAMAGE_RATIO, "Sweeping Damage Ratio");
         final Attribute attr;
         final String verbose;
         MCAttributes(Attribute attr, String newname){

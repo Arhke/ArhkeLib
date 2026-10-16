@@ -3,11 +3,11 @@ package com.Arhke.ArhkeLib.ItemUtil.CustomItem;
 import com.Arhke.ArhkeLib.Base.Base;
 import com.Arhke.ArhkeLib.Base.MainBase;
 import com.Arhke.ArhkeLib.Utils.Pair;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import de.tr7zw.nbtapi.NBTItem;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import io.papermc.paper.event.player.PrePlayerAttackEntityEvent;
+import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.*;
@@ -19,8 +19,14 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionEffectTypeCategory;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
+import java.util.ArrayList;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import static com.Arhke.ArhkeLib.ItemUtil.CustomItem.CustomProtectionCalculation.getDamageAfterProtection;
 
@@ -43,8 +49,17 @@ public class CustomAttributeListener extends MainBase implements Listener {
         }
 
     }
+    @EventHandler(priority=EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onPlayerHit(PrePlayerAttackEntityEvent event){
+        charges.put(event.getPlayer().getUniqueId(), event.getPlayer().getAttackCooldown());
+
+    }
+    private final Cache<UUID, Float> charges = CacheBuilder.newBuilder()
+            .expireAfterWrite(100, TimeUnit.MILLISECONDS)
+            .build();
+
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onPlayerDamage(EntityDamageByEntityEvent event) {
+    public void onPlayerDamage(@NonNull EntityDamageByEntityEvent event) {
         if (event.getCause() == EntityDamageEvent.DamageCause.PROJECTILE) {
             //Ranged Damage
             if (event.getDamager() instanceof Arrow && ((Arrow) event.getDamager()).getShooter() instanceof Player && event.getEntity() instanceof LivingEntity) {
@@ -107,7 +122,8 @@ public class CustomAttributeListener extends MainBase implements Listener {
                 LivingEntity le = (LivingEntity) event.getEntity();
                 boolean isBlocking = event.getDamage(EntityDamageEvent.DamageModifier.BLOCKING) != 0;
                 //Valid On-Hit
-                if (player.getAttackCooldown() > 0.95 && !isBlocking) {
+                Float charge = charges.asMap().get(player.getUniqueId());
+                if (charge != null && charge >= 0.848f && !isBlocking) {
                     if (ArmorTags.hasPlayerEffect(player, Attributes.CustomEffects.ONHITPOISON)) {
                         le.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 60, 1, false, false));
                     }
@@ -133,19 +149,29 @@ public class CustomAttributeListener extends MainBase implements Listener {
                         player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 60, 2, false, false));
                     }
                     if (ArmorTags.hasPlayerEffect(player, Attributes.CustomEffects.ONHITCLEANSER)) {
-                        le.removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
-                        le.removePotionEffect(PotionEffectType.RESISTANCE);
-                        le.removePotionEffect(PotionEffectType.STRENGTH);
-                        le.removePotionEffect(PotionEffectType.REGENERATION);
-                        le.removePotionEffect(PotionEffectType.ABSORPTION);
-                        le.setAbsorptionAmount(0);
-                        event.setDamage(EntityDamageEvent.DamageModifier.ABSORPTION, 0);
-                        le.removePotionEffect(PotionEffectType.HEALTH_BOOST);
-                        le.removePotionEffect(PotionEffectType.WATER_BREATHING);
-                        le.removePotionEffect(PotionEffectType.DOLPHINS_GRACE);
-                        le.removePotionEffect(PotionEffectType.HASTE);
-                        le.removePotionEffect(PotionEffectType.JUMP_BOOST);
-                        le.removePotionEffect(PotionEffectType.NIGHT_VISION);
+                        final int REDUCE_TICKS = 200;
+                        for (PotionEffect effect : new ArrayList<>(le.getActivePotionEffects())) {
+                            PotionEffectType type = effect.getType();
+                            if (type.getCategory() != PotionEffectTypeCategory.BENEFICIAL
+                                    || type.isInstant()
+                                    || effect.isInfinite()) {
+                                continue;
+                            }
+
+                            int newDuration = effect.getDuration() - REDUCE_TICKS;
+                            le.removePotionEffect(type);
+
+                            if (newDuration > 0) {
+                                le.addPotionEffect(new PotionEffect(
+                                        type,
+                                        newDuration,
+                                        effect.getAmplifier(),
+                                        effect.isAmbient(),
+                                        effect.hasParticles(),
+                                        effect.hasIcon()
+                                ));
+                            }
+                        }
                     }
                     if (ArmorTags.hasPlayerEffect(player, Attributes.CustomEffects.ANTIHEAL1)) {
                         le.addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, 100, 0, false, false));
@@ -174,7 +200,7 @@ public class CustomAttributeListener extends MainBase implements Listener {
                 double damage = event.getDamage();
 
                 //CRIT
-                if (isCrit(player)) {
+                if (charge != null && charge >= 0.848f && isCrit(player)) {
                     damage = Math.max(0, damage + ArmorTags.getPlayerAttribute(player, Attributes.CustomAttributes.CRITDMG));
                 }
 
@@ -216,14 +242,26 @@ public class CustomAttributeListener extends MainBase implements Listener {
                 pair = CustomProtectionCalculation.customDamageReduction(EntityDamageEvent.DamageCause.MAGIC, le, val, breach * 0.15f);
                 cumulativeDmg += val; cumulativeArmorRedux += pair.getKey(); cumulativeProtectionRedux += pair.getValue();
                 if (le instanceof Player p)
-                    cumulativeProtectionRedux += (val + pair.getKey() + pair.getValue())
-                            * Math.min(1, ArmorTags.getPlayerAttribute(p, Attributes.CustomAttributes.MAGICRESIST));
+                    cumulativeArmorRedux += (val + pair.getKey() + pair.getValue())
+                            * -Math.min(1, ArmorTags.getPlayerAttribute(p, Attributes.CustomAttributes.MAGICRESIST));
+
 
                 //Modify Base, Armor, Protection Dmg
                 event.setDamage(EntityDamageEvent.DamageModifier.BASE, cumulativeDmg);
                 event.setDamage(EntityDamageEvent.DamageModifier.ARMOR, cumulativeArmorRedux);
                 event.setDamage(EntityDamageEvent.DamageModifier.MAGIC, cumulativeProtectionRedux);
 
+                //Play shield pen animation
+                if (event.getDamage(EntityDamageEvent.DamageModifier.BLOCKING) != -cumulativeDmg){
+                    double dx = player.getLocation().getX() - le.getLocation().getX();
+                    double dz = player.getLocation().getZ() - le.getLocation().getZ();
+                    double angle = Math.toDegrees(Math.atan2(dz, dx)) - 90;
+                    double relative = angle - le.getLocation().getYaw();
+                    relative = ((relative % 360) + 360) % 360;
+                    le.playHurtAnimation((float) relative);
+//                    le.getWorld().playSound(le.getLocation(),Sound.ENTITY_PLAYER_HURT,
+//                            SoundCategory.PLAYERS,1.0f,1.0f);
+                }
 
                 //Resistance (if resistance, reduce damage)
                 PotionEffect pe = le.getPotionEffect(PotionEffectType.RESISTANCE);
@@ -377,7 +415,7 @@ public class CustomAttributeListener extends MainBase implements Listener {
             if ((event.getCause() == EntityDamageEvent.DamageCause.MAGIC ||
                     event.getCause() == EntityDamageEvent.DamageCause.WITHER ||
                     event.getCause() == EntityDamageEvent.DamageCause.POISON)) {
-                event.setDamage(event.getDamage() * (1 - Math.min(1, ArmorTags.getPlayerAttribute(player, Attributes.CustomAttributes.MAGICRESIST))));
+                event.setDamage(EntityDamageEvent.DamageModifier.ARMOR, event.getDamage() * -Math.min(1, ArmorTags.getPlayerAttribute(player, Attributes.CustomAttributes.MAGICRESIST)));
             } else if (event.getCause() == EntityDamageEvent.DamageCause.BLOCK_EXPLOSION || event.getCause() == EntityDamageEvent.DamageCause.ENTITY_EXPLOSION ||
                     event.getCause() == EntityDamageEvent.DamageCause.FIRE || event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK ||
                     event.getCause() == EntityDamageEvent.DamageCause.LAVA || event.getCause() == EntityDamageEvent.DamageCause.PROJECTILE) {
@@ -405,8 +443,14 @@ public class CustomAttributeListener extends MainBase implements Listener {
         }
     }
 
-    private static boolean isCrit(Player player){
-        return player.getAttackCooldown() > 0.9F && player.getFallDistance() > 0.0F && !player.isOnGround() && !player.isClimbing() && !player.isInWater() && !player.hasPotionEffect(PotionEffectType.BLINDNESS) && !player.isInsideVehicle() && !player.isSprinting();
+    private static boolean isCrit(Player player) {
+        return player.getFallDistance() > 0f
+                && !player.isOnGround()
+                && !player.isClimbing()
+                && !player.isInWater()
+                && !player.hasPotionEffect(PotionEffectType.BLINDNESS)
+                && !player.isInsideVehicle()
+                && !player.isSprinting();
     }
 }
 //Magic, Physical, Blast, Fire, Projectile

@@ -21,9 +21,11 @@ public class ArhkeLib extends PluginBase {
         consoleSender.sendMessage("[ArhkeLib] " + ChatColor.GREEN + "Arhke-Lib started loading...");
         plugin = this;
         //register the event listeners
-//        registerHooks(Plugins.VAULT,Plugins.ESSSENTIALS, Plugins.NBTAPI);
-//        registerCustomAttributeEvents();
+        registerHooks(Plugins.PROTOCOLLIB, Plugins.NBTAPI);
+
+        registerCustomAttributeEvents();
 //        registerEconXPSync();
+
         getCommand("addattribute").setExecutor(new AddAttributeCommand());
         getCommand("addattribute").setTabCompleter(new AddAttributeCommand());
         getCommand("itemflag").setExecutor(new ItemFlagCommand());

@@ -203,14 +203,14 @@ public class Hook extends MainBase<JavaPlugin> {
 	}
 
 	//=============<PlaceholderAPI>==========
-	public void registerPlaceholderAPI(String identifier, BiFunction<Player, String, String> translation){
-		new Placeholder(getPlugin(), identifier){
-			@Override
-			public String onPlaceholderRequest(Player p, String params) {
-				return translation.apply(p, params);
-			}
-		}.register();
-	}
+//	public void registerPlaceholderAPI(String identifier, BiFunction<Player, String, String> translation){
+//		new Placeholder(getPlugin(), identifier){
+//			@Override
+//			public String onPlaceholderRequest(Player p, String params) {
+//				return translation.apply(p, params);
+//			}
+//		}.register();
+//	}
 	//===============<WorldGuard Stuff>==========
 	/**
 	 * Checks if a region exists and contains the specified location.

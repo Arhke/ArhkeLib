@@ -1,7 +1,7 @@
 package com.Arhke.ArhkeLib.ItemUtil.CustomItem;
 
 import com.Arhke.ArhkeLib.Utils.Pair;
-import net.minecraft.util.Mth;
+
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -15,13 +15,15 @@ import java.util.Objects;
 public class CustomProtectionCalculation {
     public static float getDamageAfterAbsorb(float damage, float armorPen, float armorPoints, float toughness) {
         float effectiveToughness = 2.0F + Math.min(20, toughness) / 4.0F;
-        float effectiveArmor = Mth.clamp(armorPoints - damage / effectiveToughness, armorPoints * 0.2F, 20.0F);
+        float effectiveArmor = clamp(armorPoints - damage / effectiveToughness, armorPoints * 0.2F, 20.0F);
         float effectiveReductionPercentage = effectiveArmor / 25.0F;
         float postArmorPenReductionPercentage = Math.max(0, effectiveReductionPercentage - armorPen);
         float var8 = 1.0F - postArmorPenReductionPercentage;
         return damage * var8;
     }
-
+    public static float clamp(float value, float min, float max) {
+        return Math.max(min, Math.min(max, value));
+    }
     //Return Armor and Protection dmg reduction
     public static Pair<Float, Float> customDamageReduction(EntityDamageEvent.DamageCause dc, org.bukkit.entity.LivingEntity entity, double dDamage, float armorPen){
         float damage = (float)dDamage;
@@ -63,9 +65,8 @@ public class CustomProtectionCalculation {
             return val;
         }
         int protEnchSum = iterateInventoryArmorForEnchantment(armor.getArmorContents(), Enchantment.PROTECTION);
-//        val *= Math.max(0.2, 1 - protEnchSum * 0.04f);
-//        val *= Math.max(0.2, 1 - otherEnchSum * 0.08f);
-        val *= Math.max(0.18, 1 - otherEnchSum * 0.08f-protEnchSum * 0.04f);
+
+        val *= Math.max(0.2, (1 -protEnchSum * 0.04f)) * Math.max(0.2, (1-otherEnchSum * 0.08f));
         return val;
 
     }

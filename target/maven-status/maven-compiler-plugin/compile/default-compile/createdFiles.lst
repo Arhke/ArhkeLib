@@ -22,7 +22,6 @@ com\Arhke\ArhkeLib\FileIO\FileManager.class
 com\Arhke\ArhkeLib\Utils\MultiInstruction\OPCmd.class
 com\Arhke\ArhkeLib\Base\HelpCommand\HelpMessage.class
 com\Arhke\ArhkeLib\Utils\Directions\CardinalDirection.class
-com\Arhke\ArhkeLib\Hook\Placeholder.class
 com\Arhke\ArhkeLib\ChunkDataManager\ChunkData.class
 com\Arhke\ArhkeLib\Utils\MultiInstruction\ConsoleCmd.class
 com\Arhke\ArhkeLib\Utils\Pair.class
@@ -41,7 +40,6 @@ com\Arhke\ArhkeLib\Utils\PluginYamlBuilder.class
 com\Arhke\ArhkeLib\Hook\PredictiveXpSync.class
 com\Arhke\ArhkeLib\ItemUtil\CustomItem\CustomProtectionCalculation.class
 com\Arhke\ArhkeLib\CustomEvents\CustomEventListeners\DamageIndicatorListener.class
-com\Arhke\ArhkeLib\Hook\Hook$1.class
 com\Arhke\ArhkeLib\ItemUtil\CustomItem\Attributes$CustomAttributes.class
 com\Arhke\ArhkeLib\CustomEvents\ArmorEquipEvent1_8.class
 com\Arhke\ArhkeLib\CustomEvents\CustomEventListeners\ArmorEquipListener.class

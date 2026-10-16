@@ -2,7 +2,7 @@ package com.Arhke.ArhkeLib.Base;
 
 import com.Arhke.ArhkeLib.CustomEvents.TrueDamageEvent;
 import com.Arhke.ArhkeLib.ItemUtil.ItemUtil;
-import me.clip.placeholderapi.PlaceholderAPI;
+//import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
@@ -51,8 +51,10 @@ public abstract class Base {
                 .replace("\\n", "\n")
                 .replace(ChatColor.COLOR_CHAR+""+ChatColor.COLOR_CHAR,"&");
         if(isPlaceholderAPI) return ret;
-        return PlaceholderAPI.setPlaceholders(p, ret);
+//        return PlaceholderAPI.setPlaceholders(p, ret);
+        return ret;
     }
+
     public static String[] tcm(String[] msg, Object... objList){
         for(int j = 0; j< msg.length; j++) {
             msg[j] = tcm(msg[j], objList);
